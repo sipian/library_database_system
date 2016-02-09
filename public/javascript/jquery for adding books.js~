@@ -1,0 +1,168 @@
+$(document).ready(function(){
+
+   $("#datepicker").datepicker({dateFormat: "yy-mm-dd"}); 
+
+   function displayError(message ,error_message ,error_row) {
+      $(error_message).fadeIn("fast");
+      $(error_row).fadeIn("slow");
+      $(error_message).html(message);   
+      
+
+   };
+
+   function notDisplayError (error_row) {
+      $(error_row).fadeOut(10);
+   };
+
+
+ // ************different events***********
+
+ //*****checking number of books input is valid or not******
+
+
+ $("#copies").keyup(function(){
+   //$("button").css("background-color","blue");
+     /*if ($("#copies").val().length == 0) 
+      {
+      $("button").removeAttr('disabled');
+      $("#error_message_4").html("");
+      notDisplayError(".error_row_4");
+      //$("button").css("background-color","black");
+      }
+      else {*/
+         if( Number($(this).val()) == NaN  || Number($(this).val()) < 1 )
+      {
+      displayError("**Only Positive Integer Values Allowed","#error_message_4",".error_row_4");
+      $("button").attr('disabled', true);
+      }
+   else{
+      $("button").removeAttr('disabled');
+      $("#error_message_4").html("\0");
+      notDisplayError(".error_row_4");
+   } 
+})
+
+   
+
+
+// for checking empty fields
+
+
+
+$("button").click(function () {
+      $("button").css("background-color","yellow");
+      // value of date picker
+      var commonvariable  = "a";
+      commonvariable=$("#datepicker").val();
+      if(commonvariable == "")
+      {
+         displayError("**Empty Field","#error_message_1",".error_row_1");
+      }
+      else
+      {
+         notDisplayError(".error_row_1");  
+      }
+
+      // value of title 
+
+      commonvariable=$("#title").val();
+      if(commonvariable == "")
+      {
+         displayError("**Empty Field","#error_message_2",".error_row_2");
+      }
+      else
+      {
+         notDisplayError(".error_row_2");  
+      }
+
+      // value of author
+
+      commonvariable=$("#author").val();
+      if(commonvariable == "")
+      {
+         displayError("**Empty Field","#error_message_3",".error_row_3");
+      }
+      else
+      {
+         notDisplayError(".error_row_3");  
+      }
+
+      // value of no. of copies 
+
+      commonvariable=$("#copies").val();
+      if(commonvariable == "")
+      {
+         displayError("**Empty Field","#error_message_4",".error_row_4");
+      }
+      else
+      {
+         notDisplayError(".error_row_4");  
+      }
+
+      // value of issuable
+
+      commonvariable=$( "input:checked" ).length;
+      if(commonvariable == 0)
+      {
+         displayError("**Empty Field","#error_message_cb",".error_row_cb");
+      }
+      else
+      {
+         notDisplayError(".error_row_cb");  
+
+      }
+
+      // value of publisher
+
+      commonvariable=$("#publisher").val();
+      if(commonvariable == "")
+      {
+         displayError("**Empty Field","#error_message_5",".error_row_5");
+      }
+      else
+      {
+         notDisplayError(".error_row_5");  
+
+      }
+
+
+      // shop for book supplier
+
+      commonvariable=$("#booksource").val();
+      if(commonvariable == "")
+      {
+         displayError("**Empty Field","#error_message_11",".error_row_9");
+      }
+      else
+      {
+         notDisplayError(".error_row_9");  
+
+      }
+
+      // bill number on shop bill
+
+      commonvariable=$("#bill").val();
+      if(commonvariable == "")
+      {
+         displayError("**Empty Field","#error_message_12",".error_row_9");
+      }
+      else
+      {
+         notDisplayError(".error_row_9");  
+
+      }
+
+      // cost of book
+
+      commonvariable=$("#cost").val();
+      if(commonvariable == "")
+      {
+         displayError("**Empty Field","#error_message_13",".error_row_10");
+      }
+      else
+      {
+         notDisplayError(".error_row_10");  
+
+      }
+   });        
+});

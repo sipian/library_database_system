@@ -1,0 +1,296 @@
+doctype
+html
+	head
+		title Add Books
+		meta(charset = "utf-8")
+		meta(http-equiv="X-UA-Compatible" , content="IE=edge")
+		meta(name="viewport", content="width=device-width, initial-scale=1")
+		
+
+		//style sheets 
+
+		link(href="http://code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css",rel="stylesheet")
+  
+		link(href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css",rel="stylesheet")
+		
+		link(href="/css/css for adding books.css",rel="stylesheet")
+	body
+		.container-fluid
+			div.a
+			div.b
+				h1 Add New Books
+				br
+				h3 Book Details	
+				br
+				//1st table
+
+				table(class = "table table-condensed" ,cellpadding=3 , border=0)
+					tbody
+
+						//purchase date
+
+						tr
+							td(class="col-xs-3")
+								strong Date Of Purchase*
+							td
+								div.col-xs-5
+									div(class="form-group has-feedback" ,id="halleluja")
+										input(type="text" , id ="datepicker" ,name="dateOfPurchase" ,class="form-control" )
+										i(class="glyphicon glyphicon-ok form-control-feedback" ,id="glyphicon1")
+						tr(class="error_row_1" , style="display:none")
+							td#id1
+							td#id1
+								nav(class="col-xs-10", id="error_message_1", style="display:none")
+						//title	
+
+						tr
+							td(class = col-xs-2)
+								strong Title*
+							td
+								div.col-xs-10
+									div(class="form-group has-feedback" ,id="halleluja")
+										input(class="form-control" , type=text ,placeholder = "book name....",name = "title" ,id = "title")
+										div(class="" ,id="glyphicon2")
+
+						tr(class="error_row_2" , style="display:none")
+							td#id1
+							td#id1
+								nav(class="col-xs-10", id="error_message_2", style="display:none")
+
+						tr
+							td(class = col-xs-2)
+								strong Author*
+							td
+								div.col-xs-10
+									div(class="form-group has-feedback" ,id="halleluja")
+										input(class="form-control" , type=text ,placeholder = "author name....",name = "author" ,id = "author")
+										div(class="" ,id="glyphicon3")
+
+						tr(class="error_row_3" , style="display:none")
+							td#id1
+							td#id1
+								nav(class="col-xs-10", id="error_message_3", style="display:none")
+
+						//number of copies
+
+						tr
+							td(class = col-xs-2)
+								strong No. Of Copies*
+							td
+								div.col-xs-10
+									div(class="form-group has-feedback" ,id="halleluja")
+										input(type="number" ,class="form-control",placeholder = "quantity....", name = "copies" ,id = "copies" )
+										div(class="" ,id="glyphicon4")
+						tr(class="error_row_4" , style="display:none")
+							td#id1
+							td#id1
+								nav(class="col-xs-10" ,id="error_message_4", style="display:none")
+						//issuables
+						tr
+							td(class = col-xs-2)
+								strong Issuable*
+							td
+								input(type="checkbox" ,name = "issuable" ,id = "issuable" , value = "Yes",checked)
+						tr(class="error_row_cb" , style="display:none")
+							td#id1
+							td#id1
+								nav( class="col-xs-10" ,id="error_message_cb", style="display:none")
+				//Publication details
+				br
+				h3 Publication details
+				br
+
+				// 2nd table
+				table(class = "table table-condensed" ,cellpadding=3 , border=0)
+					tbody
+
+						// publisher name
+
+						tr
+							td(class="col-xs-3")
+								strong Publisher*
+							td
+								div.col-xs-10
+									div(class="form-group has-feedback" ,id="halleluja") 
+										input(type="text" , id ="publisher" ,name ="publisher",placeholder= "publisher....", class="form-control" )
+										div(class="" ,id="glyphicon5")
+						tr(class="error_row_5" , style="display:none")
+							td#id1
+							td#id1
+								nav(class="col-xs-10" ,id="error_message_5", style="display:none")
+
+						//place of publication
+
+						tr
+							td(class = col-xs-3)
+								strong Place Of Publication
+							td
+								div.col-xs-10
+									div(class="form-group has-feedback" ,id="halleluja")
+										input(class="form-control" , type=text ,placeholder = "place of publication....",name = "place" ,id = "place")
+										div(class="glyphicon glyphicon-ok form-control-feedback" ,id="glyphicon6")
+						tr(class="error_row_6" , style="display:none")
+							td#id1
+							td#id1
+								nav(class="col-xs-10", id="error_message_6", style="display:none")
+						// genre 
+
+						tr
+							td(class = "col-xs-3")
+								strong Genre*
+							td
+								div.col-xs-10
+									div.form-group
+										select(class="form-control" , name = "genre" ,id = "genre")
+											option(value = "academic" , selected) Academic
+											option(value = "magazine" )	Magazine 
+											option(value = "novel") Novel
+											option(value = "other" )	Others 
+
+
+				// 3rd table 
+
+
+				table(class = "table table-condensed" ,id = "table_3",cellpadding=3 , border=0)
+					tbody
+
+						//	 edition + status 
+
+						tr
+							td(class="col-xs-3")
+								strong Edition
+							td
+								div.col-xs-10
+									div(class="form-group has-feedback" ,id="halleluja")
+										input(type="number" ,class="form-control" , placeholder="book edition....",id = "edition",name = "edition",min="1", step="1")
+										div(class="glyphicon glyphicon-ok form-control-feedback" ,id="glyphicon7")
+							td(class="col-xs-2")
+								strong Status*
+							td
+								div.col-xs-10
+									div.form-group
+										select(class="form-control" , name = "status" ,id = "status")
+											option(value = "new book" , selected) New Book
+											option(value = "old Book" ) Old Book
+											option(value = "secondhand") Second hand 
+											option( value = "other" )	Others 
+
+						tr(class="error_row_7" , style="display:none")
+							td(class="col-xs-2",id="id1")
+							td(class="col-xs-4",id="id1")
+								nav(id="error_message_7", style="display:none")
+							td(class="col-xs-1",id="id1")
+							td(class="col-xs-4",id="id1")
+								nav(id="error_message_8", style="display:none")
+
+						//   Year   +   Pages 
+
+						tr
+							td(class="col-xs-3")
+								strong Year
+							td
+								div.col-xs-10
+									div(class="form-group has-feedback" ,id="halleluja")
+										input(type="number" ,class="form-control" ,placeholder = "when printed....", id = "year",name = "year",min="1", step="1")
+										div(class="glyphicon glyphicon-ok form-control-feedback" ,id="glyphicon8")
+							td(class="col-xs-3")
+								strong Pages
+							td
+								div.col-xs-10
+									div(class="form-group has-feedback" ,id="halleluja")
+										input( type="number",class="form-control" ,placeholder = "pages....",id = "pages",name = "pages",min="1", step="1")
+										div(class="glyphicon glyphicon-ok form-control-feedback" ,id="glyphicon9")
+
+						tr(class="error_row_8" , style="display:none")
+							td(class="col-xs-2",id="id1")
+							td(class="col-xs-4",id="id1")
+								nav(id="error_message_9", style="display:none")
+							td(class="col-xs-1",id="id1")
+							td(class="col-xs-4",id="id1")
+								nav(id="error_message_10", style="display:none")
+						//   Book source + bill no. 
+
+						tr
+							td(class="col-xs-3")
+								strong Book Source*
+							td
+								div.col-xs-11
+									div(class="form-group has-feedback" ,id="halleluja")
+										input(class="form-control" , type=text ,id = "booksource",name = "booksource",placeholder = "supplier details...")
+										div(class="glyphicon glyphicon-ok form-control-feedback" ,id="glyphicon10")
+							td(class="col-xs-3")
+								strong Bill No.*
+							td
+								div.col-xs-11
+									div(class="form-group has-feedback" ,id="halleluja")
+										input(class="form-control" , type=text ,id = "bill",name = "bill" ,placeholder = "bill number....")
+										div(class="glyphicon glyphicon-ok form-control-feedback" ,id="glyphicon11")
+						tr(class="error_row_9" , style="display:none")
+							td(class="col-xs-2",id="id1")
+							td(class="col-xs-4",id="id1")
+								nav(id="error_message_11", style="display:none")
+							td(class="col-xs-1",id="id1")
+							td(class="col-xs-4",id="id1")
+								nav(id="error_message_12", style="display:none")
+
+				// 4th table 
+
+
+				table(class = "table table-condensed" ,cellpadding=3 , border=0)
+					tbody
+
+						//book cost
+
+						tr
+							td.col-xs-3
+								strong Cost Per Book*
+							td
+								div.col-xs-10
+									div(class="form-group has-feedback" ,id="halleluja")
+										input(class="form-control" , type="number" ,placeholder = "Rupees....",name = "cost" ,id = "cost")
+										div(class="glyphicon glyphicon-ok form-control-feedback" ,id="glyphicon12")
+						tr(class="error_row_10" , style="display:none")
+							td#id1
+							td#id1
+								nav(class="col-xs-10", id="error_message_13", style="display:none")
+
+						//description
+
+						tr
+							td.col-xs-3
+								strong Brief Description
+							td
+								div.col-xs-10
+									div(class="form-group has-feedback" ,id="halleluja")
+										textarea(class="form-control" ,placeholder = "About...",rows = "3",name = "desc" ,id = "desc")
+						tr(class="error_row_11" , style="display:none")
+							td#id1 
+							td#id1 
+								nav(class="col-xs-10", id="error_message_14", style="display:none")
+				button(class = "btn btn-primary btn-block") Add 
+			div.c
+				pre 
+					h2 The Book Id's:
+		//javascript files placed at end for better speed
+
+
+		script( src = "https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js")
+
+
+		script(src = "http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js")
+
+
+		script(src="http://code.jquery.com/jquery-1.10.2.js")
+		script(src="http://code.jquery.com/ui/1.11.4/jquery-ui.js")
+		script(src='/javascript/jquery for adding books.js' )
+
+		
+				
+
+		
+		
+
+					
+
+
+				

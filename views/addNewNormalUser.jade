@@ -1,0 +1,186 @@
+doctype
+html
+	head
+		title Add New User
+		meta(charset = "utf-8")
+		meta(http-equiv="X-UA-Compatible" , content="IE=edge")
+		meta(name="viewport", content="width=device-width, initial-scale=1")
+		
+
+		//style sheets 
+
+		//link(href="http://code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css",rel="stylesheet")
+  
+		link(href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css",rel="stylesheet")
+		
+		link(href="/css/css for adding normal users.css",rel="stylesheet")
+	body
+		.container-fluid
+			div.a
+			div.b
+				h1 Add New User
+				br
+				h3 User Details	
+				br
+				//1st table
+				table(class = "table" ,cellpadding=4 , border=0)
+					form
+
+						//college_id
+
+						tr
+							td.col-xs-3
+								strong College Id*
+							td
+								input(type="text" , id ="college_id" ,name="college_id" ,class="col-xs-4",placeholder = "enter college roll number....." required)
+						tr(class="error_row_1" , style="display:none")
+							td#id1
+							td#id1
+								nav(class="col-xs-10", id="error_message_1", style="display:none")
+
+
+						
+						//role
+
+
+
+						tr
+							td.col-xs-3
+								strong Role*
+							td.col-xs-10
+								form.hello
+									label(for="student") Student&nbsp;&nbsp;&nbsp;
+										input(type="radio" , id ="student" ,name="role" ,value="student")
+									&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+									label(for="professor") Professor&nbsp;&nbsp;&nbsp;
+										input(type="radio" , id ="professor" ,name="role" ,value="professor")
+									&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+								
+						tr(class="error_row_2" , style="display:none")
+							td#id1
+							td#id1
+								nav(class="col-xs-10", id="error_message_2", style="display:none")
+
+
+						//name
+						
+
+						tr
+							td.col-xs-2
+								strong Name*
+							td.col-xs-2
+								input(class="col-xs-8" , type=text ,placeholder = "enter name....",name = "name" ,id = "name")
+
+						tr(class="error_row_3" , style="display:none")
+							td#id1
+							td#id1
+								nav(class="col-xs-10", id="error_message_3", style="display:none")
+
+						//sex
+
+						tr
+							td.col-xs-3
+								strong Sex*
+							td
+								form#f2
+									label(for="male") Male&nbsp;&nbsp;&nbsp;
+										input(type="radio" , id ="male" ,name="sex" ,value="male")
+									&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+									label(for="female") Female&nbsp;&nbsp;&nbsp;
+										input(type="radio" , id ="female" ,name="sex" ,value="female")
+									&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+						tr(class="error_row_4" , style="display:none")
+							td#id1
+							td#id1
+								nav(class="col-xs-10" ,id="error_message_4", style="display:none")
+
+
+
+						//Branch
+
+
+						tr
+							td.col-xs-3
+								strong Branch*
+							td.col-xs-10
+								form#f3
+									label(for="btech") Btech&nbsp;&nbsp;&nbsp;
+										input(type="radio" , id ="btech" ,name="branch" ,value="btech")
+									&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+									label(for="mtech") Mtech&nbsp;&nbsp;&nbsp;
+										input(type="radio" , id ="mtech" ,name="branch" ,value="mtech")
+									&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+									label(for="phd") Phd&nbsp;&nbsp;&nbsp;
+										input(type="radio" , id ="phd" ,name="branch" ,value="phd")
+
+						tr(class="error_row_5" , style="display:none")
+							td#id1
+							td#id1
+								nav( class="col-xs-10" ,id="error_message_5", style="display:none")
+
+
+						// Email Id
+
+
+						tr
+							td.col-xs-2
+								strong Email Id*
+							td 
+								input(type="email" , id ="email" ,name ="email", placeholder= "enter e-mail id....", class="col-xs-10" )
+						tr(class="error_row_6" , style="display:none")
+							td#id1
+							td#id1
+								nav(class="col-xs-10" ,id="error_message_6", style="display:none")
+
+
+						//Phone number
+
+
+						tr
+							td.col-xs-2
+								strong Phone Number*
+							td
+								input(class="col-xs-5" , type=text ,placeholder = "enter phone number....",name = "phone" ,id = "phone")
+						tr(class="error_row_7" , style="display:none")
+							td#id1
+							td#id1
+								nav(class="col-xs-10", id="error_message_7", style="display:none")
+
+						// description
+						tr
+							td.col-xs-2
+								strong Brief Description
+							td
+								textarea(class="col-xs-12" ,placeholder = "About...",rows = "3",name = "desc" ,id = "desc")
+						tr(class="error_row_8" , style="display:none")
+							td#id1 
+							td#id1 
+								nav(class="col-xs-10", id="error_message_8", style="display:none")
+						
+				button(class = "btn btn-primary btn-block") Add 
+			div.c
+				pre 
+					h2 Status :
+		//javascript files placed at end for better speed
+
+
+		script( src = "https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js")
+
+
+		script(src = "http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js")
+
+
+		script(src="http://code.jquery.com/jquery-1.10.2.js")
+		//script(src="http://code.jquery.com/ui/1.11.4/jquery-ui.js")
+		script(src='/javascript/jquery for adding normal user.js' )
+
+		
+				
+
+		
+		
+
+					
+
+
+				
