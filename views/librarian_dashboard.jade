@@ -1,0 +1,87 @@
+doctype
+html
+	head
+		title Dashboard Librarian
+		meta(charset = "utf-8")
+		meta(http-equiv="X-UA-Compatible" , content="IE=edge")
+		meta(name="viewport", content="width=device-width, initial-scale=1")
+		
+
+		//style sheets 
+
+		//link(href="http://code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css",rel="stylesheet")
+  
+		link(href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css",rel="stylesheet")
+
+		link(href="/css/css for adding normal users.css",rel="stylesheet")
+	body
+		.container-fluid
+			div.a
+			div.b
+				h1 Dashboard
+					br
+				h3 Settings 
+					p
+						a(href="http://localhost:3000/librarian/dashboard/settings" , target = "_blank" , class="btn btn-lg btn-primary") Change Settings
+					br
+				h3 Books
+					p
+						a(href="http://localhost:3000/librarian/dashboard/issue" , target = "_blank" , class="btn btn-lg btn-primary") Issue
+					p
+						button(type = "submit" , class = "btn btn-lg btn-primary ") Return
+						
+					p
+						button(type = "submit" , class = "btn btn-lg btn-primary ") Reserve
+					
+
+					br
+				h3 Add
+					p
+						a(href="http://localhost:3000/librarian/add_new_book" , target = "_blank" , class="btn btn-lg btn-primary") Books
+					p
+						button(type = "submit" , class = "btn btn-lg btn-primary ") User
+					br
+
+				h3 My Settings
+					p
+						button(type = "submit" , class = "btn btn-lg btn-primary ") Change password
+					p
+						button(type = "submit" , class = "btn btn-lg btn-primary ") Log Out
+						
+					p
+						button(type = "submit" , class = "btn btn-lg btn-primary ") Delete account(if books returned)
+					br
+
+				h3 Reports
+					p
+						button(type = "submit" , class = "btn btn-lg btn-primary ") Books(source,author,genre,publisher,issuable,range of date,bill number)
+					p
+						button(type = "submit" , class = "btn btn-lg btn-primary ") User(complete list , specific details)
+
+					p
+						button(type = "submit" , class = "btn btn-lg btn-primary ") Issue History of a book
+					br
+
+				h3 Accounts reports
+					p
+						button(type = "submit" , class = "btn btn-lg btn-primary ") Books cost (complete list , specific details(bill no.,book_id , source , ))
+					p
+						button(type = "submit" , class = "btn btn-lg btn-primary ") Fine Details(complete fine details,specific details for(student id,date),unpaid fine)
+					
+
+					br
+
+				h3 Search Books
+					p
+						button(type = "submit" , class = "btn btn-lg btn-primary ") Books(source,author,genre,publisher,issuable-for user same)
+			div.c 
+		//javascript files placed at end for better speed
+
+		script( src = "https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js")
+
+
+		script(src = "http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js")
+
+
+		//script(src='/javascript/jquery for login page.js' )
+

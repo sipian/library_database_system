@@ -1,11 +1,7 @@
 $(document).ready(function(){
 
-//**********Jquery UI for date**********    
-   $("#datepicker").datepicker({dateFormat: "yy-mm-dd"}); 
-   //$("td").css("border-top","none !important");
-   //$("td:eq(2),td:eq(3),td:eq(4),td:eq(5)").css("background-color","blue");s
 
-
+$("#datepicker").datepicker();
    //function to display error and fade in 
 
    function displayError(message ,error_message ,error_row) {
@@ -68,6 +64,7 @@ $("#cost").keyup(function(){
       if(!(Number.isInteger(parseInt($(this).val(),10))))
       {
          displayError("*Invalid Number","#error_message_13",".error_row_10");
+         $("#glyphicon12").attr("class","glyphicon glyphicon-remove form-control-feedback");
       //$("button").attr('disabled', true);
       }
       //$("button").removeAttr('disabled');s
@@ -75,13 +72,16 @@ $("#cost").keyup(function(){
          {
             var string = $(this).val();
             if(parseInt(string,10)<=0)
-                  displayError("*No Non Positive Number Allowed","#error_message_13",".error_row_10");
+                  {displayError("*No Non Positive Number Allowed","#error_message_13",".error_row_10");
+                  $("#glyphicon12").attr("class","glyphicon glyphicon-remove form-control-feedback");}
                else if(string.indexOf('e')!=-1)
-            {displayError("*Mathematical function 'e' is not Allowed","#error_message_13",".error_row_10"); }
+            {displayError("*Mathematical function 'e' is not Allowed","#error_message_13",".error_row_10");
+            $("#glyphicon12").attr("class","glyphicon glyphicon-remove form-control-feedback"); }
          
          else   
             {
                $("#error_message_13").text("");
+               $("#glyphicon12").attr("class","glyphicon glyphicon-ok form-control-feedback");
                notDisplayError(".error_row_10");
             } 
          }
@@ -96,26 +96,33 @@ $("#cost").keyup(function(){
             {
                $("#error_message_5").text("");
                notDisplayError(".error_row_5");
+               $("#glyphicon5").attr("class","glyphicon glyphicon-ok form-control-feedback");
               
             } 
    });
  $("#place").keyup(function(){
      var string = $(this).val();
          if(string.length>=14)
-            {displayError("*Value Of Place Is Too Big","#error_message_6",".error_row_6"); }
+            {displayError("*Value Of Place Is Too Big","#error_message_6",".error_row_6");
+            $("#glyphicon6").attr("class","glyphicon glyphicon-remove form-control-feedback");
+             }
          else   
             {
                $("#error_message_6").text("");
+               $("#glyphicon6").attr("class","glyphicon glyphicon-ok form-control-feedback");
                notDisplayError(".error_row_6");
                
             } 
    });
+
+ 
    
 
  $("#pages").keyup(function(){
       if(!(Number.isInteger(parseInt($(this).val(),10))))
       {
          displayError("*Invalid Number","#error_message_10",".error_row_8");
+         $("#glyphicon9").attr("class","glyphicon glyphicon-remove form-control-feedback");
          flag=0;
       //$("button").attr('disabled', true);
       }
@@ -124,17 +131,22 @@ $("#cost").keyup(function(){
       //$("button").removeAttr('disabled');
      var string = $(this).val();
          if(string.indexOf('.')!=-1)
-            {displayError("*No fractional input Allowed","#error_message_10",".error_row_8"); flag=0;}
+            {displayError("*No fractional input Allowed","#error_message_10",".error_row_8"); flag=0;
+               $("#glyphicon9").attr("class","glyphicon glyphicon-remove form-control-feedback");}
             else if(parseInt(string,10)<=0)
-                  {displayError("*No Non Positive Number Allowed","#error_message_10",".error_row_8"); flag=0;}
+                  {displayError("*No Non Positive Number Allowed","#error_message_10",".error_row_8"); flag=0;
+                  $("#glyphicon9").attr("class","glyphicon glyphicon-remove form-control-feedback");}
                else if(string.indexOf('e')!=-1)
-            {displayError("*Mathematical function 'e' is not Allowed","#error_message_10",".error_row_8"); flag=0;}
+            {displayError("*Mathematical function 'e' is not Allowed","#error_message_10",".error_row_8"); flag=0;
+               $("#glyphicon9").attr("class","glyphicon glyphicon-remove form-control-feedback");}
          else if(parseInt(string,10)>=65534)
-            {displayError("*Value Of Pages Is Too Big","#error_message_10",".error_row_8"); flag=0;}
+            {displayError("*Value Of Pages Is Too Big","#error_message_10",".error_row_8"); flag=0;
+               $("#glyphicon9").attr("class","glyphicon glyphicon-remove form-control-feedback");}
          else   
             {
                $("#error_message_10").text("");
                notDisplayError(".error_row_8");
+               $("#glyphicon9").attr("class","glyphicon glyphicon-ok form-control-feedback");
                flag=1;
             } 
    }
@@ -145,7 +157,7 @@ $("#cost").keyup(function(){
             {
                $("#pages").val("");
                notDisplayError(".error_row_8");
-               
+               $("#glyphicon9").attr("class","");
                $("#error_message_10").text("");
             }
    });
@@ -154,6 +166,7 @@ $("#cost").keyup(function(){
       {
          displayError("*Invalid Number","#error_message_7",".error_row_7");
          flag=0;
+         $("#glyphicon7").attr("class","glyphicon glyphicon-remove form-control-feedback");
       //$("button").attr('disabled', true);
       }
       
@@ -161,17 +174,23 @@ $("#cost").keyup(function(){
       //$("button").removeAttr('disabled');
      var string = $(this).val();
          if(string.indexOf('.')!=-1)
-            {displayError("*No fractional input Allowed","#error_message_7",".error_row_7"); flag=0;}
+            {displayError("*No fractional input Allowed","#error_message_7",".error_row_7"); flag=0;
+            $("#glyphicon7").attr("class","glyphicon glyphicon-remove form-control-feedback");
+      }
             else if(parseInt(string,10)<=0)
-                  {displayError("*No Non Positive Number Allowed","#error_message_7",".error_row_7"); flag=0;}
+                  {displayError("*No Non Positive Number Allowed","#error_message_7",".error_row_7"); flag=0;
+                     $("#glyphicon7").attr("class","glyphicon glyphicon-remove form-control-feedback");}
                else if(string.indexOf('e')!=-1)
-            {displayError("*Mathematical function 'e' is not Allowed","#error_message_7",".error_row_7"); flag=0;}
+            {displayError("*Mathematical function 'e' is not Allowed","#error_message_7",".error_row_7"); flag=0;
+               $("#glyphicon7").attr("class","glyphicon glyphicon-remove form-control-feedback");}
                else if(parseInt(string,10)>=244)
-                  {displayError("*Value Of Edition Is Too Big","#error_message_7",".error_row_7"); flag=0;}
+                  {displayError("*Value Of Edition Is Too Big","#error_message_7",".error_row_7"); flag=0;
+                     $("#glyphicon7").attr("class","glyphicon glyphicon-remove form-control-feedback");}
          else   
             {
                $("#error_message_7").text("");
                notDisplayError(".error_row_7");
+               $("#glyphicon7").attr("class","glyphicon glyphicon-ok form-control-feedback");
                flag=1;
             } 
    }
@@ -182,7 +201,7 @@ $("#cost").keyup(function(){
             {
                $("#edition").val("");
                notDisplayError(".error_row_7");
-               
+               $("#glyphicon7").attr("class","");
                $("#error_message_7").text("");
             }
    });
@@ -191,6 +210,7 @@ $("#year").keyup(function(){
       {
          displayError("*Invalid Number","#error_message_9",".error_row_8");
          flag1=0;
+         $("#glyphicon8").attr("class","glyphicon glyphicon-remove form-control-feedback");
       //$("button").attr('disabled', true);
       }
       
@@ -198,17 +218,22 @@ $("#year").keyup(function(){
       //$("button").removeAttr('disabled');
      var string = $(this).val();
          if(string.indexOf('.')!=-1)
-            {displayError("*No fractional input Allowed","#error_message_9",".error_row_8"); flag1=0;}
+            {displayError("*No fractional input Allowed","#error_message_9",".error_row_8"); flag1=0;
+               $("#glyphicon8").attr("class","glyphicon glyphicon-remove form-control-feedback");}
             else if(parseInt(string,10)<=0)
-                  {displayError("*No Non Positive Number Allowed","#error_message_9",".error_row_8"); flag1=0;}
+                  {displayError("*No Non Positive Number Allowed","#error_message_9",".error_row_8"); flag1=0;
+                  $("#glyphicon8").attr("class","glyphicon glyphicon-remove form-control-feedback");}
                else if(string.indexOf('e')!=-1)
-            {displayError("*Mathematical function 'e' is not Allowed","#error_message_9",".error_row_8"); flag1=0;}
+            {displayError("*Mathematical function 'e' is not Allowed","#error_message_9",".error_row_8"); flag1=0;
+               $("#glyphicon8").attr("class","glyphicon glyphicon-remove form-control-feedback");}
          else if(parseInt(string,10)>=65534)
-            {displayError("*Value Of Year Is Too Big","#error_message_9",".error_row_8"); flag1=0;}
+            {displayError("*Value Of Year Is Too Big","#error_message_9",".error_row_8"); flag1=0;
+            $("#glyphicon8").attr("class","glyphicon glyphicon-remove form-control-feedback");}
          else   
             {
                $("#error_message_9").text("");
                notDisplayError(".error_row_8");
+               $("#glyphicon8").attr("class","glyphicon glyphicon-ok form-control-feedback");
                flag1=1;
             } 
    }
@@ -219,12 +244,12 @@ $("#year").keyup(function(){
             {
                $("#error_message_9").text("");
                notDisplayError(".error_row_8");
-               
+               $("#glyphicon8").attr("class","");
                $("#year").val("");
             }
    });
 
- 
+
 //  ******to fade out the error message when user starts typing ********
 
 $("#datepicker").on({
@@ -267,31 +292,62 @@ $("#publisher").keyup(function (){
    else if(commonvariable == "") $("#glyphicon5").attr("class","glyphicon glyphicon-ok form-control-feedback"); 
       
 })
-
+ 
 $("#booksource").keyup(function (){
    commonvariable=$("#bill").val();
    commonvariable1=$("#booksource").val();
-   if(commonvariable != "" && commonvariable1 != "")
+   var length1 = commonvariable1.length;
+   var length2 = commonvariable.length;
+   if(commonvariable != "" && commonvariable1 != "" && length1<=30 && length2<=15)
       {
-         notDisplayError(".error_row_9"); 
+         notDisplayError(".error_row_9");
+         $("#glyphicon10").attr("class","glyphicon glyphicon-ok form-control-feedback");
+         $("#glyphicon11").attr("class","glyphicon glyphicon-ok form-control-feedback");
+         $("#error_message_12").text();
+         $("#error_message_11").text();
       }
       else
-   if(commonvariable1 != ""){notDisplayError("#error_message_11"); }
+   if(commonvariable1 != "" && length1<=30)
+      {  $("#error_message_11").text("");
+         notDisplayError("#error_message_11");
+      $("#glyphicon10").attr("class","glyphicon glyphicon-ok form-control-feedback");
+       }
+   else if (length1>=30) {
+      $("#glyphicon10").attr("class","glyphicon glyphicon-remove form-control-feedback");
+      displayError("*Value of Booksource too long","#error_message_11",".error_row_9");
+   };
 })
 $("#bill").keyup(function (){
    commonvariable=$("#bill").val();
    commonvariable1=$("#booksource").val();
-   if(commonvariable != "" && commonvariable1 != "")
+   var length1 = commonvariable1.length;
+   var length2 = commonvariable.length;
+   if(commonvariable != "" && commonvariable1 != "" && length1<=15 && length2<=30)
       {
-         notDisplayError(".error_row_9"); 
+         notDisplayError(".error_row_9");
+         $("#glyphicon10").attr("class","glyphicon glyphicon-ok form-control-feedback");
+         $("#glyphicon11").attr("class","glyphicon glyphicon-ok form-control-feedback");
+         $("#error_message_12").text();
+         $("#error_message_11").text();
       }
-   if(commonvariable != ""){notDisplayError("#error_message_12"); }
+      else
+   if(commonvariable != "" && length2<=15)
+      {$("#error_message_12").text("");
+         notDisplayError("#error_message_12");
+      $("#glyphicon11").attr("class","glyphicon glyphicon-ok form-control-feedback");
+       }
+       else if (length2>=15) {
+      $("#glyphicon11").attr("class","glyphicon glyphicon-remove form-control-feedback");
+      displayError("*Value of bill too long","#error_message_12",".error_row_9");
+   };
 })
 
 // for checking empty fields and if no errors send ajax request to server 
 
-
-$("button").click(function () {
+$("#reset").click(function(){
+   location.reload(false);
+});
+$("#submit").click(function () {
       
       // value of all inputs
       var commonvariable  = "";
@@ -351,20 +407,34 @@ $("button").click(function () {
       // shop for book supplier
 
       commonvariable=$("#booksource").val();
-      if(commonvariable == "")
+      commonvariable1=$("#bill").val();
+      if(commonvariable == "" && commonvariable1 != "")
       {
+
          displayError("*Empty Field","#error_message_11",".error_row_9");
-         commonvariable  = "a";
+         $("#error_message_12").text("");
+         $("#glyphicon10").attr("class","glyphicon glyphicon-remove form-control-feedback");
+         //commonvariable  = "a";
       }
       
       // bill number on shop bill
 
-      commonvariable=$("#bill").val();
-      if(commonvariable == "")
+      if(commonvariable1 == "" && commonvariable != "")
       {
          displayError("*Empty Field","#error_message_12",".error_row_9");
-         commonvariable  = "a";
+         $("#error_message_11").text("");
+         $("#glyphicon11").attr("class","glyphicon glyphicon-remove form-control-feedback");
+         //commonvariable  = "a";
       }
+      if(commonvariable1 == "" && commonvariable == "")
+      {
+         displayError("*Empty Field","#error_message_12",".error_row_9");
+         displayError("*Empty Field","#error_message_11",".error_row_9");
+         $("#glyphicon10").attr("class","glyphicon glyphicon-remove form-control-feedback");
+         $("#glyphicon11").attr("class","glyphicon glyphicon-remove form-control-feedback");
+         //commonvariable  = "a";
+      
+      }   
       
       // cost of book
 
@@ -372,6 +442,7 @@ $("button").click(function () {
       if(commonvariable == "")
       {
          displayError("*Empty Field","#error_message_13",".error_row_10");
+         $("#glyphicon12").attr("class","glyphicon glyphicon-remove form-control-feedback");
          commonvariable  = "a";
       }
       
@@ -386,16 +457,15 @@ $("button").click(function () {
          {
             
             counter=1;
-            window.setTimeout(function() {
+            /*window.setTimeout(function() {
         alert("Please check all the input that you entered");
-    }, 500);
+    }, 500);*/
             
             break;            
          }
          }
          if(counter==0)
             {
-               $('.c').html("\0");
                
                var data1=$("input:lt(7)").serialize();
                data1=data1+"&genre="+$("#genre").val()+"&edition="+$("input:eq(7)").val()+"&status="+$("#status").val()+"&";
@@ -429,11 +499,17 @@ $("button").click(function () {
                         
                      }
                      //alert(string_to_print);
-                     string_to_print = "<pre><h2 class='col-xs-14'>The Book Id's: </h1><br><h3>"+string_to_print+"</h3></pre>";
-                     $('.c').html(string_to_print);
+                     string_to_print = "<h2 class='col-xs-14'>The Book Id's: </h1><br><h3>"+string_to_print+"</h3>";
+                     $('#print_the_status').append(string_to_print);
+                     $("#submit").attr("class","btn btn-primary btn-block disabled");
+                     $( "input" ).prop( "disabled", true );
+                     $( "select" ).prop( "disabled", true );
+                     $( "textarea" ).prop( "disabled", true );
+                     $("#submit").off("click");
                   },
                   error: function (xhr, status, error) {
-                     $('.c').html('Error : '+error);
+                     string_to_print = "<pre><h2 class='col-xs-14'>Error Report: </h1><br><h3>"+error+"</h3></pre>";
+                     $('.c').html(string_to_print);
                   }
                })
             }

@@ -1,9 +1,10 @@
-var mysql = require("mysql");
-var validator = require("validator");
-var fs=require('fs');
+
 module.exports=function(dateOfPurchase,title,author,copies,issuable,publisher,place,genre,edition,status,year,pages,booksource,bill,cost,desc){
 return{
 	books_data:function(callback){
+		var mysql = require("mysql");
+		var validator = require("validator");
+		var fs=require('fs');
 		var dbclient=mysql.createConnection({
 			host:"localhost",
 			user:"headlibrarian",

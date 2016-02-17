@@ -1,0 +1,49 @@
+doctype
+html
+	head
+		title Home
+		meta(charset = "utf-8")
+		meta(http-equiv="X-UA-Compatible" , content="IE=edge")
+		meta(name="viewport", content="width=device-width, initial-scale=1")
+		
+
+		//style sheets 
+
+		//link(href="http://code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css",rel="stylesheet")
+  
+		link(href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css",rel="stylesheet")
+
+		link(href="/css/css for adding normal users.css",rel="stylesheet")
+	body
+		.container-fluid
+			div.a
+			div.b
+				h1 Home
+					br
+
+				h3 Search Books
+					p
+						button(type = "submit" , class = "btn btn-lg btn-primary ") Books(source,author,genre,publisher,issuable-for user same)
+				br
+
+				h3 Login
+					p
+						a(href="http://localhost:3000/login" , target = "_blank" , class="btn btn-lg btn-primary") Login
+
+				h3 Sign Up
+					p 
+						a(href="http://localhost:3000/sign_up" , target = "_blank" , class="btn btn-lg btn-primary") Sign Up
+				br
+				
+
+			div.c 
+		//javascript files placed at end for better speed
+
+		script( src = "https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js")
+
+
+		script(src = "http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js")
+
+
+		//script(src='/javascript/jquery for login page.js' )
+

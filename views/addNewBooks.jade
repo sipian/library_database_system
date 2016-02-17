@@ -36,7 +36,7 @@ html
 								div.col-xs-5
 									div(class="form-group has-feedback" ,id="halleluja")
 										input(type="text" , id ="datepicker" ,name="dateOfPurchase" ,class="form-control" )
-										i(class="glyphicon glyphicon-ok form-control-feedback" ,id="glyphicon1")
+										i(class="glyphicon glyphicon-calendar form-control-feedback" ,id="glyphicon1")
 						tr(class="error_row_1" , style="display:none")
 							td#id1
 							td#id1
@@ -128,7 +128,7 @@ html
 								div.col-xs-10
 									div(class="form-group has-feedback" ,id="halleluja")
 										input(class="form-control" , type=text ,placeholder = "place of publication....",name = "place" ,id = "place")
-										div(class="glyphicon glyphicon-ok form-control-feedback" ,id="glyphicon6")
+										div(class="" ,id="glyphicon6")
 						tr(class="error_row_6" , style="display:none")
 							td#id1
 							td#id1
@@ -163,7 +163,7 @@ html
 								div.col-xs-10
 									div(class="form-group has-feedback" ,id="halleluja")
 										input(type="number" ,class="form-control" , placeholder="book edition....",id = "edition",name = "edition",min="1", step="1")
-										div(class="glyphicon glyphicon-ok form-control-feedback" ,id="glyphicon7")
+										div(class="" ,id="glyphicon7")
 							td(class="col-xs-2")
 								strong Status*
 							td
@@ -192,14 +192,14 @@ html
 								div.col-xs-10
 									div(class="form-group has-feedback" ,id="halleluja")
 										input(type="number" ,class="form-control" ,placeholder = "when printed....", id = "year",name = "year",min="1", step="1")
-										div(class="glyphicon glyphicon-ok form-control-feedback" ,id="glyphicon8")
+										div(class="" ,id="glyphicon8")
 							td(class="col-xs-3")
 								strong Pages
 							td
 								div.col-xs-10
 									div(class="form-group has-feedback" ,id="halleluja")
 										input( type="number",class="form-control" ,placeholder = "pages....",id = "pages",name = "pages",min="1", step="1")
-										div(class="glyphicon glyphicon-ok form-control-feedback" ,id="glyphicon9")
+										div(class="" ,id="glyphicon9")
 
 						tr(class="error_row_8" , style="display:none")
 							td(class="col-xs-2",id="id1")
@@ -217,14 +217,14 @@ html
 								div.col-xs-11
 									div(class="form-group has-feedback" ,id="halleluja")
 										input(class="form-control" , type=text ,id = "booksource",name = "booksource",placeholder = "supplier details...")
-										div(class="glyphicon glyphicon-ok form-control-feedback" ,id="glyphicon10")
+										div(class="" ,id="glyphicon10")
 							td(class="col-xs-3")
 								strong Bill No.*
 							td
 								div.col-xs-11
 									div(class="form-group has-feedback" ,id="halleluja")
 										input(class="form-control" , type=text ,id = "bill",name = "bill" ,placeholder = "bill number....")
-										div(class="glyphicon glyphicon-ok form-control-feedback" ,id="glyphicon11")
+										div(class="" ,id="glyphicon11")
 						tr(class="error_row_9" , style="display:none")
 							td(class="col-xs-2",id="id1")
 							td(class="col-xs-4",id="id1")
@@ -248,7 +248,7 @@ html
 								div.col-xs-10
 									div(class="form-group has-feedback" ,id="halleluja")
 										input(class="form-control" , type="number" ,placeholder = "Rupees....",name = "cost" ,id = "cost")
-										div(class="glyphicon glyphicon-ok form-control-feedback" ,id="glyphicon12")
+										div(class="" ,id="glyphicon12")
 						tr(class="error_row_10" , style="display:none")
 							td#id1
 							td#id1
@@ -267,10 +267,11 @@ html
 							td#id1 
 							td#id1 
 								nav(class="col-xs-10", id="error_message_14", style="display:none")
-				button(class = "btn btn-primary btn-block") Add 
+				button(class = "btn btn-primary btn-lg btn-block" id="submit") Save Into Database
+				button(class = "btn btn-primary btn-lg btn-block" id="reset") Add New Entry
 			div.c
-				pre 
-					h2 The Book Id's:
+				pre#print_the_status 
+					h2 See Here:
 		//javascript files placed at end for better speed
 
 

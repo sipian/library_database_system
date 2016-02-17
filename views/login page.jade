@@ -1,0 +1,78 @@
+doctype
+html
+	head
+		title Login Page
+		meta(charset = "utf-8")
+		meta(http-equiv="X-UA-Compatible" , content="IE=edge")
+		meta(name="viewport", content="width=device-width, initial-scale=1")
+		
+
+		//style sheets 
+
+  
+		link(href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css",rel="stylesheet")
+
+		link(href="/css/css for adding normal users.css",rel="stylesheet")
+	body
+		.container-fluid
+			div.a
+			div.b
+				h1 cs15btech11019
+				br
+				h3 cs15btech11019@iith.ac.in
+				h3 Bbarcelona
+				br
+				//1st table
+				table(class = "table" ,cellpadding=4 , border=0)
+					form(action = '/login_to_account',method = 'post' )
+
+						//Male id .....
+
+
+
+						tr
+							td.col-xs-3
+								strong IITH Roll No.*
+							td
+								input(type="text" , id ="roll" ,name="roll" ,class="col-xs-4",placeholder = "enter roll no....." required)
+						tr(class="error_row_1" )
+							td#id1
+							td#id1
+								nav(class="col-xs-10", id="error_message_1") #{error_message_1}
+
+
+
+						tr
+							td.col-xs-3
+								strong IITH Mail Id*
+							td
+								input(type="text" , id ="mail_id" ,name="mail_id" ,class="col-xs-4",placeholder = "enter mail_id....." required)
+						tr(class="error_row_2" )
+							td#id1
+							td#id1
+								nav(class="col-xs-10", id="error_message_2") #{error_message_2}
+
+
+						
+						//password
+						tr
+							td.col-xs-3
+								strong Password*
+							td
+								input(type="password" , id ="password" ,name="password" ,class="col-xs-4",placeholder = "enter password..... " required)
+						tr(class="error_row_3" )
+							td#id1
+							td#id1
+								nav(class="col-xs-10", id="error_message_3") #{error}
+						button(type = "submit" , class = "btn btn-lg btn-primary ") Login
+			div.c 
+		//javascript files placed at end for better speed
+
+		script( src = "https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js")
+
+
+		script(src = "http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js")
+
+
+		//script(src='/javascript/jquery for login page.js' )
+

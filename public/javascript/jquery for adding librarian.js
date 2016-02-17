@@ -45,13 +45,13 @@ $("#email").keyup(function(){
    
       if(regex_for_mail.test($(this).val())==false)
       {
-         displayError("*Invalid Email Id","#error_message_6",".error_row_6");
+         displayError("*Invalid Email Id","#error_message_4",".error_row_4");
       //$("button").attr('disabled', true);
       }
       else if($(this).val().length>=35)
-            {displayError("*Value Of Email Is Too Big","#error_message_6",".error_row_6"); }
+            {displayError("*Value Of Email Is Too Big","#error_message_4",".error_row_4"); }
       else{
-         notDisplayError(".error_row_6");
+         notDisplayError(".error_row_4");
       }
    });
  $("#college_id").keyup(function(){
@@ -67,11 +67,11 @@ $("#email").keyup(function(){
  $("#name").keyup(function(){
 
          if($(this).val().length>=25)
-            {displayError("*Value Of Name Is Too Big","#error_message_3",".error_row_3"); }
+            {displayError("*Value Of Name Is Too Big","#error_message_2",".error_row_2"); }
          else   
             {
-               $("#error_message_3").text("");
-               notDisplayError(".error_row_3");
+               $("#error_message_2").text("");
+               notDisplayError(".error_row_2");
                
             } 
    });
@@ -80,35 +80,18 @@ $("#email").keyup(function(){
    var password_checker = $("#password").val();
     if(commonvariable == password_checker  && password_checker!="")
       {
-         $("#error_message_10").text("");
-         notDisplayError(".error_row_10"); 
+         $("#error_message_6").text("");
+         notDisplayError(".error_row_6"); 
       }
       else if(commonvariable != password_checker  && password_checker!="")
       {
-         displayError("*Renter Correct Password ","#error_message_10",".error_row_10");
+         displayError("*Renter Correct Password ","#error_message_6",".error_row_6");
       }
      
 })
 //  ******to fade out the error message when user starts typing ********
 
-$("#password").keyup(function (){
-   commonvariable=$(this).val();
-   error_text=$('#error_message_9').text();
-   if(commonvariable != ""  && error_text=="*Empty Field")
-      {
-         notDisplayError(".error_row_9"); 
-      }
-     
-})
-$("#cnfpassword").keyup(function (){
-   commonvariable=$(this).val();
-   error_text=$('#error_message_10').text();
-   if(commonvariable != ""  && error_text=="*Empty Field")
-      {
-         notDisplayError(".error_row_10"); 
-      }
-     
-})
+
 $("#college_id").keyup(function (){
    commonvariable=$(this).val();
    error_text=$('#error_message_1').text();
@@ -118,34 +101,24 @@ $("#college_id").keyup(function (){
       }
 })
 
-$("input:radio[name='sex']").click(function(){
-        notDisplayError(".error_row_4"); 
-      })
-
-$("#f3").click(function(){
-   if ($('input[name="branch"]:checked').length > 0) {
-         notDisplayError(".error_row_5"); 
-      }
-})
-
-$("input:radio[name='role_of_user']").click(function(){
-        notDisplayError(".error_row_2"); 
+$("input:radio[name='gender']").click(function(){
+        notDisplayError(".error_row_3"); 
       })
 
 $("#name").keyup(function (){
    commonvariable=$(this).val();   
-   error_text=$('#error_message_3').text();
+   error_text=$('#error_message_2').text();
    if(commonvariable != "" && error_text=="*Empty Field")
       {
-         notDisplayError(".error_row_3"); 
+         notDisplayError(".error_row_2"); 
       }
 })
 $("#email").keyup(function (){
    commonvariable=$(this).val();
-   error_text=$('#error_message_6').text();
+   error_text=$('#error_message_4').text();
    if(commonvariable != "" && error_text=="*Empty Field")
       {
-         notDisplayError(".error_row_6"); 
+         notDisplayError(".error_row_4"); 
       }
 })
 
@@ -158,11 +131,30 @@ $("#phone").keyup(function (){
       }
      
 })
-
-
+$("#password").keyup(function (){
+   commonvariable=$(this).val();
+   error_text=$('#error_message_5').text();
+   if(commonvariable != ""  && error_text=="*Empty Field")
+      {
+         notDisplayError(".error_row_5"); 
+      }
+     
+})
+$("#cnfpassword").keyup(function (){
+   commonvariable=$(this).val();
+   error_text=$('#error_message_6').text();
+   if(commonvariable != ""  && error_text=="*Empty Field")
+      {
+         notDisplayError(".error_row_6"); 
+      }
+     
+})
+$("#reset").click(function(){
+   location.reload(false);
+});
 // for checking empty fields and if no errors send ajax request to server 
 
-$("button").click(function () {
+$("#add").click(function () {
       
       // value of all inputs stored here
       var commonvariable  = "";
@@ -173,34 +165,27 @@ $("button").click(function () {
          displayError("*Empty Field","#error_message_1",".error_row_1");
          commonvariable  = "a";
       }
-      if ($('input[name="role_of_user"]:checked').length <= 0) {
-         displayError("*Empty Field","#error_message_2",".error_row_2");
-         commonvariable  = "a";
-      }
+      
 
       commonvariable=$("#name").val();
       if(commonvariable == "")
       {
+         displayError("*Empty Field","#error_message_2",".error_row_2");
+         commonvariable  = "a";
+      }
+      
+
+      if (!$("input:radio[name='gender']").is(':checked')) {
          displayError("*Empty Field","#error_message_3",".error_row_3");
          commonvariable  = "a";
       }
       
 
-      if ($('input[name="sex"]:checked').length <= 0) {
-         displayError("*Empty Field","#error_message_4",".error_row_4");
-         commonvariable  = "a";
-      }
-      
-
-      if ($('input[name="branch"]:checked').length <= 0) {
-         displayError("*Empty Field","#error_message_5",".error_row_5");
-         commonvariable  = "a";
-      }
        
       commonvariable=$("#email").val();
       if(commonvariable == "")
       {
-         displayError("*Empty Field","#error_message_6",".error_row_6");
+         displayError("*Empty Field","#error_message_4",".error_row_4");
          commonvariable  = "a";
       }
       
@@ -211,20 +196,21 @@ $("button").click(function () {
       {
          displayError("*Empty Field","#error_message_7",".error_row_7");
          commonvariable  = "a";
-      }      
- commonvariable=$("#password").val();
+      }   
+      commonvariable=$("#password").val();
       if(commonvariable == "")
       {
-         displayError("*Empty Field","#error_message_9",".error_row_9");
+         displayError("*Empty Field","#error_message_5",".error_row_5");
          commonvariable  = "a";
       }   
-       commonvariable=$("#cnfpassword").val();
+      commonvariable=$("#cnfpassword").val();
       if(commonvariable == "")
       {
-         displayError("*Empty Field","#error_message_10",".error_row_10");
+         displayError("*Empty Field","#error_message_6",".error_row_6");
          commonvariable  = "a";
       }      
 
+       
       var counter=0;
 
       for(var t=1;t<=8;t++)
@@ -258,7 +244,7 @@ $("button").click(function () {
                //})
                $.ajax({
                   type:"POST",
-                  url:"/sign-up",
+                  url:"/add_new_librarian",
                   data: data1,
                   dataType:'html',
                   cache:true,
@@ -269,14 +255,19 @@ $("button").click(function () {
                            alert("User with the given details already exists.\nPlease Again Reenter Correct Details");
                            location.reload(false);
                         }
-                     else if(answer_to_send_back == "Verification mail could not be sent")
+                     else if(answer_to_send_back == "Librarian could not be added")
                      {
-                        alert("Verification mail could not be sent.\nPlease enter correct mail id.");
+                        alert("Librarian could not be added.\nPlease try later.");
                      }
                      else{
-                        alert("Verification mail has been sent to your mail id.\nPlease check your mail.");
-                        location.reload(false);
+                     string_to_print = "<pre><h1 class='col-xs-14'><strong>Librarian Id : </strong><br></h1><h3>"+answer_to_send_back+"</h3></pre>";
+                     $('.c').append(string_to_print);
+                     $("#add").attr("class","btn btn-primary btn-block disabled");
+                     $( "input" ).prop( "disabled", true );
+                     $( "textarea" ).prop( "disabled", true );
+                     $("#add").off("click");
                      }
+                     
                      //alert($('.c').text());
                      //alert(answer_to_send_back[0]);
                      //alert()

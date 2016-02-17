@@ -1,7 +1,7 @@
 doctype
 html
 	head
-		title Sign Up
+		title Add New Librarian
 		meta(charset = "utf-8")
 		meta(http-equiv="X-UA-Compatible" , content="IE=edge")
 		meta(name="viewport", content="width=device-width, initial-scale=1")
@@ -18,48 +18,27 @@ html
 		.container-fluid
 			div.a
 			div.b
-				h1 Sign Up
+				h1 Add New Librarian
 				br
-				h3 User Details	
+				h3 Librarian Details	
 				br
 				//1st table
 				table(class = "table" ,cellpadding=4 , border=0)
 					form
-
-						//college_id
+						
+						//IITH ID				
 
 						tr
-							td.col-xs-3
-								strong College Id*
-							td
-								input(type="text" , id ="college_id" ,name="college_id" ,class="col-xs-4",placeholder = "enter college roll number....." required)
+							td.col-xs-2
+								strong IITH I.D.*
+							td.col-xs-2
+								input(class="col-xs-8" , type=text ,placeholder = "enter id....",name = "college_id" ,id = "college_id")
+
 						tr(class="error_row_1" , style="display:none")
 							td#id1
 							td#id1
 								nav(class="col-xs-10", id="error_message_1", style="display:none")
-
-
-						
-						//role
-						tr
-							td.col-xs-3
-								strong Role*
-							td.col-xs-10
-								form#f4
-									label(for="student") Student&nbsp;&nbsp;&nbsp;
-										input(type="radio" , id ="student" ,name="role_of_user" ,value="student")
-									&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-									label(for="professor") Professor&nbsp;&nbsp;&nbsp;
-											input(type="radio" , id ="professor" ,name="role_of_user" ,value="professor")
-									&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;								
-						tr(class="error_row_2" , style="display:none")
-							td#id1
-							td#id1
-								nav(class="col-xs-10", id="error_message_2", style="display:none")
-
-
-						//name
-						
+						//name						
 
 						tr
 							td.col-xs-2
@@ -67,10 +46,10 @@ html
 							td.col-xs-2
 								input(class="col-xs-8" , type=text ,placeholder = "enter name....",name = "name" ,id = "name")
 
-						tr(class="error_row_3" , style="display:none")
+						tr(class="error_row_2" , style="display:none")
 							td#id1
 							td#id1
-								nav(class="col-xs-10", id="error_message_3", style="display:none")
+								nav(class="col-xs-10", id="error_message_2", style="display:none")
 
 						//sex
 
@@ -80,40 +59,17 @@ html
 							td.col-xs-10								
 								form#f2
 									label(for="male") Male&nbsp;&nbsp;&nbsp;
-										input(type="radio" , id ="male" ,name="sex" ,value="male")
+										input(type="radio" , id ="male" ,name="gender" ,value="male")
 									&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 									label(for="female") Female&nbsp;&nbsp;&nbsp;
-										input(type="radio" , id ="female" ,name="sex" ,value="female")
+										input(type="radio" , id ="female" ,name="gender" ,value="female")
 									&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+
 								
-						tr(class="error_row_4" , style="display:none")
+						tr(class="error_row_3" , style="display:none")
 							td#id1
 							td#id1
-								nav(class="col-xs-10" ,id="error_message_4", style="display:none")
-
-
-
-						//Branch
-
-
-						tr
-							td.col-xs-3
-								strong Branch*
-							td.col-xs-10
-								form#f3
-									label(for="btech") Btech&nbsp;&nbsp;&nbsp;
-										input(type="radio" , id ="btech" ,name="branch" ,value="btech")
-									&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-									label(for="mtech") Mtech&nbsp;&nbsp;&nbsp;
-										input(type="radio" , id ="mtech" ,name="branch" ,value="mtech")
-									&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-									label(for="phd") Phd&nbsp;&nbsp;&nbsp;
-										input(type="radio" , id ="phd" ,name="branch" ,value="phd")
-
-						tr(class="error_row_5" , style="display:none")
-							td#id1
-							td#id1
-								nav( class="col-xs-10" ,id="error_message_5", style="display:none")
+								nav(class="col-xs-10" ,id="error_message_3", style="display:none")
 
 
 						// Email Id
@@ -124,10 +80,10 @@ html
 								strong IITH Mail Id*
 							td 
 								input(type="email" , id ="email" ,name ="email", placeholder= "enter e-mail id....", class="col-xs-10" )
-						tr(class="error_row_6" , style="display:none")
+						tr(class="error_row_4" , style="display:none")
 							td#id1
 							td#id1
-								nav(class="col-xs-10" ,id="error_message_6", style="display:none")
+								nav(class="col-xs-10" ,id="error_message_4", style="display:none")
 
 						// password 
 								
@@ -136,21 +92,21 @@ html
 								strong Password*
 							td 
 								input(type="password" , id ="password" ,name ="password", placeholder= "enter password....", class="col-xs-10" )
-						tr(class="error_row_9" , style="display:none")
+						tr(class="error_row_5" , style="display:none")
 							td#id1
 							td#id1
-								nav(class="col-xs-10" ,id="error_message_9", style="display:none")
+								nav(class="col-xs-10" ,id="error_message_5", style="display:none")
 
 
 						tr
 							td.col-xs-2
 								strong Confirm Password*
 							td 
-								input(type="password" , id ="password" ,name ="cnfpassword", placeholder= "reenter password....", class="col-xs-10" )
-						tr(class="error_row_10" , style="display:none")
+								input(type="password" , id ="cnfpassword" ,name ="cnfpassword", placeholder= "reenter password....", class="col-xs-10" )
+						tr(class="error_row_6" , style="display:none")
 							td#id1
 							td#id1
-								nav(class="col-xs-10" ,id="error_message_10", style="display:none")
+								nav(class="col-xs-10" ,id="error_message_6", style="display:none")
 
 
 						//Phone number
@@ -177,10 +133,12 @@ html
 							td#id1 
 								nav(class="col-xs-10", id="error_message_8", style="display:none")
 						
-				button(class = "btn btn-primary btn-block") Add 
+				button(class = "btn btn-primary btn-lg btn-block" id="add") Add Librarian
+				button(class = "btn btn-primary btn-lg btn-block" id="reset") Add New Entry
 			div.c
-				pre 
-					h2 Status :
+				pre
+					h1
+						strong Librarian I.D.
 		//javascript files placed at end for better speed
 
 
@@ -190,7 +148,7 @@ html
 		script(src = "http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js")
 
 
-		script(src='/javascript/jquery for adding normal user.js' )
+		script(src='/javascript/jquery for adding librarian.js' )
 
 		
 				
