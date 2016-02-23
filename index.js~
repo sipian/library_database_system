@@ -118,11 +118,11 @@ app.post('/login_to_account',urlencodedParser,function(req,res){
 				{
 					res.cookie('user',data,{signed:true});
 					if(role == 'headlibrarian')
-						res.redirect('/headlibrarian/dashboard');
+						res.redirect('http://localhost:3000/headlibrarian/dashboard');
 					else if(role == 'librarian')
-						res.redirect('/librarian/dashboard');
+						res.redirect('http://localhost:3000/librarian/dashboard');
 					else if(role == 'student' || role == 'professor')
-						res.redirect('/user/dashboard');
+						res.redirect('http://localhost:3000/user/dashboard');
 				}
 	});
 	});
@@ -173,7 +173,7 @@ app.get('/verification_mail',urlencodedParser,function(req,res){
 			if(data != true)
 				{
 					res.cookie('user',data,{signed:true});
-					res.redirect('/user/dashboard');
+					res.redirect('http://localhost:3000/user/dashboard');
 				}
 			else
 			{
@@ -182,40 +182,107 @@ app.get('/verification_mail',urlencodedParser,function(req,res){
 						console.log("Error for adding data got from verification mail : ",err);
 					else
 						res.cookie('user',data,{signed:true});
-						res.redirect('/user/dashboard');
+						res.redirect('http://localhost:3000/user/dashboard');
 				});
 			}
 	})
 })
 
 
-app.get("/harsh", urlencodedParser,function(req,res){
+app.get('/harsh',function(req,res){
+	//delete from user;
+	var query_for_sql = 
+`
 
-var query = req.query.query;
-				if(query == null)
-				{
-					res.render('create table.jade');
-				}
-					else
-{
+delete from setting;
+delete from accounts;
+delete from book_transaction;
+drop table setting;
+drop table accounts;
+delete from user;
+delete from books;
+drop table book_transaction;
 
-dbclient.query(query,function(err,rows,fields){
-						if(err)
-						{
-							console.log('error');
-						res.send("Error occured , try again." + err);
-					}
-					else
-					{
-						console.log('done');
-						res.send("done");
-					}
-				})
-			}
-				});
+drop table user;
+drop table books;
 
+create table user(
+user_id int(11) primary key auto_increment not null,
+roll_no varchar(25) unique not null,
+role enum('student','professor','librarian','headlibrarian') not null,
+name_of_user text not null,
+sex enum('male','female') not null,
+branch enum('btech','mtech','phd') ,
+email_id varchar(40) not null,
+password_of_user longtext not null,
+phone text,
+description mediumtext
+)engine = InnoDB;
 
-/****home dashboaards of users***********/
+insert into user(roll_no,role,name_of_user,sex,email_id,password_of_user,phone,description) values('libstaff0001','headlibrarian','harsh agarwal','male','agarwal.h1997@gmail.com','b109f3bbbc244eb82441917ed06d618b9008dd09b3befd1b5e07394c706a8bb980b1d7785e5976ec049b46df5f1326af5a2ea6d103fd07c95385ffab0cacbc86','8400700457','I am the head librarian , I am GOD');
+create table  books(
+book_id char(10) primary key,
+book_title text not null,
+author_of_book text not null,
+issuable enum('Yes','No'),
+publisher varchar(25) not null,
+place_of_publish varchar(14),
+genre char(20) not null,
+edition tinyint(3) unsigned,
+year_of_print smallint(5) unsigned,
+pages smallint(5) unsigned,
+description mediumtext);
+
+insert into books values('tem0','','','Yes','','','academic',null,null,null,null);
+
+create table accounts(
+book_id_for_accounts char(10),
+date_of_purchase char(50),
+cost double,
+status_of_book varchar(18) not null,
+bill_number char(15) not null, 
+book_source varchar(30),
+CONSTRAINT book_ids FOREIGN KEY (book_id_for_accounts)
+REFERENCES books(book_id)
+ON UPDATE CASCADE
+ON DELETE CASCADE
+);
+alter table books add fulltext search_key (book_title,author_of_book,publisher);
+
+create table  setting(
+max_books int unsigned ,
+fine_1st_week double unsigned ,
+fine_2nd_week double unsigned,
+fine_3rd_week double unsigned  
+);
+
+create table book_transaction(
+roll_no varchar(25) ,
+book_id char(10),
+issue Date,
+estimated_return_date Date,
+receiving Date,
+reserve char(5) default  'no',
+CONSTRAINT book_id_trans FOREIGN KEY (book_id)
+REFERENCES books(book_id)
+ON UPDATE CASCADE
+ON DELETE CASCADE,
+CONSTRAINT roll_no_trans FOREIGN KEY (roll_no)
+REFERENCES user(roll_no)
+ON UPDATE CASCADE
+ON DELETE CASCADE);`
+
+dbclient.query(query_for_sql,function(err,rows,fields){
+							if(err)
+								{console.log("change fine 1  error "+err);
+														res.send("Error occured.");}
+							else
+								res.send("done");
+						})
+
+});
+
+/******home dashboaards of users***********/
 
 
 app.get('/headlibrarian/dashboard',function(req,res){
@@ -386,7 +453,7 @@ app.get('/librarian/dashboard/settings',function(req,res){
 					res.send('<script>alert("You are not authorized to enter here.")</script>');
 				else
 				{
-
+					
 
 		// checking for null in input
 		var query_for_sql ="select * from setting";
@@ -404,7 +471,7 @@ app.get('/librarian/dashboard/settings',function(req,res){
 	}
 });
 app.get('/change_max_books',urlencodedParser,function(req,res){
-
+		
 
 		// checking for null in input
 		var query_for_sql ="update setting set max_books = "+req.query.max;
@@ -417,10 +484,10 @@ app.get('/change_max_books',urlencodedParser,function(req,res){
 				})
 			});
 app.get('/change_fine',urlencodedParser,function(req,res){
-
+		
 
 		// checking for null in input
-
+		
 		if(req.query.fine1!=null)
 		{var query_for_sql ="update setting set fine_1st_week = "+req.query.fine1;
 						dbclient.query(query_for_sql,function(err,rows,fields){
@@ -476,7 +543,7 @@ app.get('/librarian/dashboard/issue',function(req,res){
 
 
 app.get("/check_user_count",urlencodedParser,function(req,res){
-
+	
 		var query_for_sql ="select max_books from setting";
 				dbclient.query(query_for_sql,function(err,rows,fields){
 					if(err)
@@ -506,7 +573,7 @@ app.get("/check_user_count",urlencodedParser,function(req,res){
 				})
 			});
 app.get("/check_correct_user_detail",urlencodedParser,function(req,res){
-
+	
 		var query_for_sql ="select user_id from user where roll_no = '"+req.query.roll_no+"'";
 				dbclient.query(query_for_sql,function(err,rows,fields){
 					if(err)
@@ -528,8 +595,8 @@ app.get("/check_correct_user_detail",urlencodedParser,function(req,res){
 			});
 
 app.get("/check_correct_book",urlencodedParser,function(req,res){
-
-
+	
+		
 		var query_for_sql ="select book_id from books where book_id = '"+req.query.book+"'";
 		console.log(query_for_sql);
 				dbclient.query(query_for_sql,function(err,rows,fields){
@@ -570,7 +637,7 @@ app.get("/check_correct_book",urlencodedParser,function(req,res){
 			});
 
 app.post('/issue_book',urlencodedParser,function(req,res){
-
+		
 			var fullDate = new Date();
 			var future = new Date();
 			future.setDate(fullDate.getDate() + 30);
@@ -626,7 +693,7 @@ var daysBetween1 = function( date1, date2 ) {
   return Math.round(difference_ms/one_day);
 }
 app.get("/check_correct_book_for_transaction",urlencodedParser,function(req,res){
-
+	
 		var query_for_sql ="select receiving from book_transaction where book_id = '"+req.query.book+"' and receiving IS NULL";
 		console.log(query_for_sql);
 				dbclient.query(query_for_sql,function(err,rows,fields){
@@ -648,7 +715,7 @@ app.get("/check_correct_book_for_transaction",urlencodedParser,function(req,res)
 				})
 			});
 app.post('/return_book',urlencodedParser,function(req,res){
-
+		
 		var query_for_sql ="select estimated_return_date from book_transaction where book_id = '"+req.body.book+"' and receiving IS NULL";
 				dbclient.query(query_for_sql,function(err,rows,fields){
 					if(err)
@@ -753,53 +820,51 @@ app.get("/search_book", urlencodedParser,function(req,res){
      	console.log("debug : "+cookie_checker_array_1.user_id+" , "+cookie_checker_array_1.role+" , "+cookie_checker_array_1.logged_in);
 				if(cookie_checker_array_1.logged_in != 'yes')
 					res.send('<script>alert("Please login first")</script>');
-				else if(cookie_checker_array_1.role != 'librarian' && cookie_checker_array_1.role != 'headlibrarian' && cookie_checker_array_1.role != 'student' && cookie_checker_array_1.role != 'professor')
+				else if(cookie_checker_array_1.role != 'librarian' && cookie_checker_array_1.role != 'headlibrarian')
 					res.send('<script>alert("You are not authorized to enter here.")</script>');
 				else
+					var query = req.query.search;
+				if(query == null)
+				{res.render('search_book.jade',{user_query:""});}
+			else
+				{
+					
+
+					//res.render('search_book.jade',{user_query:query});}
+					var query_for_sql ="select book_id,book_title,author_of_book,issuable,description from books where match(book_title,author_of_book,publisher) against('"+query+"' IN NATURAL LANGUAGE MODE)";
+					dbclient.query(query_for_sql,function(err,rows,fields){
+						if(err)
+						{
+						res.send("Error occured.");
+					}
+					else
 					{
-						var query = req.query.search;
-									if(query == null)
-										res.render('search_book.jade',{user_query:""});
-								else
+						if(rows.length>0)
+						{
+							var string = "";
+							for (var i = 0; i <=rows.length - 1; i++) {
+									/*while(true)
 									{
-					
-					
-										//res.render('search_book.jade',{user_query:query});}
-										var query_for_sql ="select DISTINCT book_title,author_of_book,publisher,issuable from books where match(book_title,author_of_book,publisher) against( ? IN NATURAL LANGUAGE MODE)";
-										dbclient.query(query_for_sql,[query],function(err,rows,fields){
-											if(err)
-											{
-												console.log("Error  occured." + err);
-											res.send("Error  occured.");
-										}
-										else
-										{
-											if(rows.length>0)
-											{
-												var string = "";
-												for (var i = 0; i <=rows.length - 1; i++) {
-															string = string + "<a href = 'http://localhost:3000/book_details?query="+query+"&book_title="+rows[i].book_title+"&author_of_book="+rows[i].author_of_book+"&publisher="+rows[i].publisher+"&issuable="+rows[i].issuable+"' ,target='_blank'><pre width=80% , height:100%>"+"<div class = 'col-xs-5''><img src='http://i.imgur.com/jNhTge7.gif'  width=100% height=100%></div><div class = 'col-xs-7'><h4 class='text-justify'><br>Book Name : "+rows[i].book_title+"<br>Book Author : "+rows[i].author_of_book+"<br>Publisher : "+rows[i].publisher+"<br>Issuable :  "+rows[i].issuable+"</h4></div></pre></a>";
-					
-																	}
-																	string = string.replace(/null/gi,"-")
-																	res.render('search_book.jade',{user_query:query,query_result:string});
-																}
-											else{
-												var string = "<p>No Results Found!!!</p>"
+										if(rows[i].book_id == rows[++i].book_title)
+									}*/
+										string = string + "<a href = '/home/harsh/templates/web/index.html' ,target='_blank'><pre width=80% , height:100%>"+"<div class = 'col-xs-5''><img src='http://i.imgur.com/jNhTge7.gif'  width=100% height=100%></div><div class = 'col-xs-7'><h3 class='text-justify'	><br>Book Name : "+rows[i].book_title+"<br>Book Author : "+rows[i].author_of_book+"<br>Issuable :  "+rows[i].issuable+"<br>Description :  "+rows[i].description+"</h3></div></pre></a>";
+
+												}
+												string = string.replace(/null/gi,"-")
 												res.render('search_book.jade',{user_query:query,query_result:string});
 											}
-														}
-					
-					
-					
-						})
 									}
-								}
+
+
+
+	})
+				}
 			}
 	else{
 		 res.sendStatus(404);
 	}
 });
+/*
 
 app.get('/book_details',urlencodedParser,function(req,res){
 	var user_authentication = req.signedCookies.user;
@@ -809,124 +874,31 @@ app.get('/book_details',urlencodedParser,function(req,res){
 		console.log("cookie array : "+cookie_checker(user_authentication));
 		var cookie_checker_array_1 = cookie_checker(user_authentication);
      	console.log("debug : "+cookie_checker_array_1.user_id+" , "+cookie_checker_array_1.role+" , "+cookie_checker_array_1.logged_in);
-			if(cookie_checker_array_1.logged_in != 'yes')
-				res.send('<script>alert("Please login first")</script>');
-			else if(cookie_checker_array_1.role != 'librarian' && cookie_checker_array_1.role != 'headlibrarian' && cookie_checker_array_1.role != 'student' && cookie_checker_array_1.role != 'professor')
-				res.send('<script>alert("You are not authorized to enter here.")</script>');
+				if(cookie_checker_array_1.logged_in != 'yes')
+					res.send('<script>alert("Please login first")</script>');
+				else if(cookie_checker_array_1.role != 'librarian' && cookie_checker_array_1.role != 'headlibrarian')
+					res.send('<script>alert("You are not authorized to enter here.")</script>');
+				else
+					var query = req.query.search;
+				if(query == null)
+				{res.render('search_book.jade',{user_query:""});}
 			else
 				{
-						var book_title = req.query.book_title;
-										var author_of_book = req.query.author_of_book;
-										var publisher = req.query.publisher;
-										var issuable = req.query.issuable;
-									if(book_title == null || author_of_book == null || publisher == null || issuable == null )
-									{
-										res.render('search_book.jade',{user_query:query,query_result:"<p>No Results Found!!!</p>"});
-									}
-								else
-									{
-										//res.render('search_book.jade',{user_query:query});}
-										var query_for_sql ="select book_id,description from books where (book_title = ? AND author_of_book = ? AND publisher = ? AND issuable = ?) ";
-										dbclient.query(query_for_sql,[book_title,author_of_book,publisher,issuable],function(err,rows,fields){
-											if(err)
-											{
-												console.log("Error occured for book_details ->" + err);
-											res.send("Error occured.");
+					var mysql = require('mysql');
+					var dbclient=mysql.createConnection({
+			host:"localhost",
+			user:"headlibrarian",
+			password:"password",
+			database:"library",
+			debug:true,
+		});
 
-										}
-										else
-										{
-
-												var string = `
-												<div>
-													<div class = 'col-xs-4'>
-														<img src='http://i.imgur.com/jNhTge7.gif'  width=100% height=100%>
-													</div>
-													<div class = 'col-xs-8'>
-														<p>Title -> <h3>`+book_title+`</h4></p>
-														<p>By -> <h4>`+author_of_book+`</h4></p>
-														<p>Publication -> <h4>`+publisher+`</h4></p>
-														<p>Issuable -> <h4>`+issuable+`</h4></p>
-														<p>Description -> <h4>`+rows[0].description+`</h4></p>
-													</div>
-												</div>
-													<div>
-														<table class = "table table-condensed table-striped" cellpadding=3  border=0>
-															<tr>
-																<td><h5><strong>Book I.D.</strong></h5></td>
-																<td><h5><strong>Available</strong></h5></td>
-																<td><h5><strong>Expected Arrival Date</strong></h5></td>
-																<td><h5><strong>Is Book Reserved</strong></h5></td>
-																<td><h5><strong>Reserve It</strong></h5></td>
-															</tr>`;
-															console.log("string for 1st case -> "+string);
- 												for (var i = 0; i <=rows.length - 1; i++)
-												{
-													var book_id_temp = rows[i].book_id;
- 													query_for_sql = "select estimated_return_date,reserve from book_transaction where book_id = '"+book_id_temp+"' AND receiving IS NULL";
-													console.log("query_for_sql "+(i+1)+" : "+query_for_sql);
-													dbclient.query(query_for_sql,function(err,rows1,fields){
-														if(err){
-															console.log("Error occured for book_details 2 ->" + err);
-											res.send("Error occured.");
-														}
-														else
-														{
-															console.log("row length : "+ rows1.length);
-															console.log("book id "+(i+1)+" : "+ book_id_temp);
-															if(rows1.length == 0)
-																												{
-																													string = string + `
-																													<tr>
-																														<td><h5>`+book_id_temp+`</h5></td>
-																														<td><h5>Yes</h5></td>
-																														<td><h5>---</h5></td>
-																														<td><h5>---</h5></td>
-																														<td><h5>---</h5></td>
-																													</tr>`;
-																													console.log("string for 1st case -> "+string);
-																												}
-																												else if(rows1.length == 1 ){
-																													if(rows1[i].reserve == null)
-																													{
-																														string = string + `
-																																							<tr>
-																																								<td><h5>`+book_id_temp+`</h5></td>
-																																								<td><h5>No</h5></td>
-																																								<td><h5>`+rows1[i].estimated_return_date+`</h5></td>
-																																								<td><h5>No</h5></td>
-																																								<td><h5><input type="checkbox" ,name = "reserve" ,id = "reserve" , value = "Yes"></h5></td>
-																																							</tr>`;
-																													//console.log("string for 2nd case -> "+string);
-																													}
-																													else{
-																														string = string + `
-																																							<tr>
-																																								<td><h5>`+book_id_temp+`</h5></td>
-																																								<td><h5>No</h5></td>
-																																								<td><h5>`+rows1[i].estimated_return_date+`</h5></td>
-																																								<td><h5>Yes</h5></td>
-																																								<td><h5>---</h5></td>
-																																							</tr>`;
-																														//console.log("string for 3rd case -> "+string);
-																													}
-																			
-																			
-																												}
-																											}
-																										})
-												}
-												if(i== rows.length)
-												{
-													//string = string + "</table></div>";
-												res.render('search_book.jade',{user_query:req.query.query,query_result:string});
-												}
-											}
-										})
-									}
-								}		
-							}
-							else
-								res.sendStatus(404);
-						});
-
+					//res.render('search_book.jade',{user_query:query});}
+					var query_for_sql ="select * from books book_id = '"+req.query.+"'";
+					dbclient.query(query_for_sql,function(err,rows,fields){
+						if(err)
+						{
+						res.send("Error occured.");
+					}
+					else
+})*/

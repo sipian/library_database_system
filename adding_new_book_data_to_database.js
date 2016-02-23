@@ -1,28 +1,20 @@
-
+var mysql = require("mysql");
+var fs = require('fs');
+var validator = require('validator');
+		var dbclient=mysql.createConnection({
+			host: process.env.RDS_HOSTNAME || "localhost",
+			user:process.env.RDS_USERNAME || "headlibrarian",
+			password:process.env.RDS_PASSWORD || "password",
+			database:"ebdb"
+		});
+		dbclient.connect();
 module.exports=function(dateOfPurchase,title,author,copies,issuable,publisher,place,genre,edition,status,year,pages,booksource,bill,cost,desc){
 return{
 	books_data:function(callback){
-		var mysql = require("mysql");
-		var validator = require("validator");
-		var fs=require('fs');
-		var dbclient=mysql.createConnection({
-			host:"localhost",
-			user:"headlibrarian",
-			password:"password",
-			database:"library",
-			debug:true,
-			
-			
-		});
-		
-		// checking for null in input 
-		dbclient.connect();
 		
 
 		//sanitizing input
-		dateOfPurchase=validator.escape(dateOfPurchase);
-		dateOfPurchase=validator.trim(dateOfPurchase);
-		dateOfPurchase=validator.stripLow(dateOfPurchase,false);
+		
 		copies=validator.escape(copies);
 		copies=validator.trim(copies);
 		copies=validator.stripLow(copies,false);
@@ -80,7 +72,7 @@ return{
 			edition = '\\N';
 		if(desc=="")
 			desc = '\\N';
-		//desc=validator.stripLow(desc,false);		
+		//desc=validator.stripLow(desc,false);	
 			
 				var unique_id="";
 				var answer_to_send_back = [];
@@ -118,7 +110,7 @@ return{
 					dbclient.query(query_for_sql,function(err,rows,fields){
 							if(err)callback(err);
 							else
-							{dbclient.end();		
+							{		
 												callback(null,answer_to_send_back);}
 					});
 					}

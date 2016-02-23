@@ -1,5 +1,13 @@
 var nodemailer=require('nodemailer');
+var mysql = require("mysql");
 
+    var dbclient=mysql.createConnection({
+      host: process.env.RDS_HOSTNAME || "localhost",
+      user:process.env.RDS_USERNAME || "headlibrarian",
+      password:process.env.RDS_PASSWORD || "password",
+      database:"ebdb"
+    });
+    dbclient.connect();
 module.exports=function(college_id,role,name,sex,branch,email,password_of_user,phone,desc){
 return{
 	send_authentication_mail:function(callback){
@@ -18,14 +26,14 @@ return{
         		service: "Gmail",
         		auth: {
             		user: "cs15btech11019@iith.ac.in",
-            		pass: "Bbarcelona"
+            		pass: "gmail_Bbarcelona_5"
         		}
     		});
     		var mailOptions = {
         		from: "cs15btech11019@iith.ac.in",
         		to: email, 
         		subject: 'Verification mail for new user in library signup', // Subject line
-    			html: "Please click on the link below to verify your account<br><h1><a href = 'http://localhost:3000/verification_mail?data="+encrypted+"'> Click me</a></h1>" // plaintext body
+    			html: "Please click on the link below to verify your account<br><h1><a href = 'http://lib.harshagarwal.co.in/verification_mail?data="+encrypted+"'> Click me</a></h1>" // plaintext body
 
      // html body
     			}
@@ -49,16 +57,7 @@ return{
 			console.log(decrypt(encrypted));
 	},
 checking_if_user_exists:function(callback){
-    var mysql = require("mysql");
-    var dbclient=mysql.createConnection({
-      host:"localhost",
-      user:"headlibrarian",
-      password:"password",
-      database:"library",
-      debug:true,     
-    });
-      
-    dbclient.connect();
+  
     var query_for_sql ="select user_id from user where (roll_no = '"+college_id+"' OR email_id = '"+email+"')";
     console.log(query_for_sql);
     dbclient.query(query_for_sql,function(err,rows,fields){

@@ -1,22 +1,21 @@
+var mysql = require("mysql");
+
+    var dbclient=mysql.createConnection({
+      host: process.env.RDS_HOSTNAME || "localhost",
+      user:process.env.RDS_USERNAME || "headlibrarian",
+      password:process.env.RDS_PASSWORD || "password",
+      database:"ebdb"
+    });
+    dbclient.connect();
 module.exports=function(college_id,name,sex,email,password_of_user,phone,desc){
 
 return{
 	add_into_database:function(array,callback){
       console.log("reached database");
-      var mysql = require("mysql");
-      var validator = require("validator");
+       var validator = require("validator");
       const crypto = require('crypto');
       const hash = crypto.createHash('sha512');
-      var dbclient=mysql.createConnection({
-      host:"localhost",
-      user:"headlibrarian",
-      password:"password",
-      database:"library",
-      debug:true,     
-    });
-    dbclient.connect();
-    //loop for sanitizing input
-    
+       
     for(var loop_variable = 0;loop_variable <=6;loop_variable++)
     {
       array[loop_variable]=validator.escape(array[loop_variable]);
@@ -50,16 +49,7 @@ return{
 })
 },
 checking_if_user_exists:function(callback){
-    var mysql = require("mysql");
-    var dbclient=mysql.createConnection({
-      host:"localhost",
-      user:"headlibrarian",
-      password:"password",
-      database:"library",
-      debug:true,     
-    });
-      
-    dbclient.connect();
+     
     var query_for_sql ="select user_id from user where (roll_no = '"+college_id+"' OR email_id = '"+email+"')";
     console.log(query_for_sql);
     dbclient.query(query_for_sql,function(err,rows,fields){

@@ -99,7 +99,9 @@ html
 				br
 				h3 Publication details
 				br
-
+				div(id = "loader-wrapper" style="visibility: hidden;")
+					div(id = "loader")
+				
 				// 2nd table
 				table(class = "table table-condensed" ,cellpadding=3 , border=0)
 					tbody
@@ -283,6 +285,7 @@ html
 
 		script(src="http://code.jquery.com/jquery-1.10.2.js")
 		script(src="http://code.jquery.com/ui/1.11.4/jquery-ui.js")
+		//script(src="http://js/vendor/modernizr-2.6.2.min.js")
 		script(src='/javascript/jquery for adding books.js' )
 
 		

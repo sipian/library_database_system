@@ -25,36 +25,33 @@ html
 
 					tr
 						td.col-xs-5
-							strong User Roll No.
+							strong Book No.
 						td
-							input(type="text" , id ="roll_no" ,name="roll_no" ,class="col-xs-11",placeholder = "enter user roll no here....." required)
+							input(type="text" , id ="book" ,name="book" ,class="col-xs-11",placeholder = "enter user roll no here....." required)
 					tr(class="error_row_1" )
 						td#id1
 						td#id1
-							nav(class="col-xs-10", id="error_message_1") #{error_message_1}
-				
-					tr 
-						td.col-xs-5	Book Id
-						td
-							input(type="text" , id ="book" ,name="book" ,class="col-xs-11",placeholder = "enter Book Id here....." required)
-					tr(class="error_row_2" )
-						td#id1
-						td#id1
-							nav(class="col-xs-10", id="error_message_2") #{error_message_2}
-
+							nav(class="col-xs-10", id="error_message_1") #{error_message_1}				
+					
 
 					tr(id="date" , style="display:none")
-						td.col-xs-5	Expected Last Day
+						td.col-xs-5	Expected last day
 						td
-							input(type="text" , id ="last_day" ,class="col-xs-11" ,readonly)
+							nav(id ="last_day" ,class="col-xs-11" ,readonly)
+
+					tr(id="fine234" , style="display:none")
+						td.col-xs-5	Fine levied
+						td
+							nav(id ="fine134" ,class="col-xs-11" ,readonly)
 					tr(class="error_row_3" )
 						td#id1
 						td#id1
 							nav(class="col-xs-10", id="error_message_3") #{error_message_3}
+							
 					tr
 						td.col-xs-5
 						td
-							button(class = "btn btn-lg btn-primary ",id="fine") Issue
+							button(class = "btn btn-lg btn-primary ",id="fine") RETURN
 			div.c 
 		//javascript files placed at end for better speed
 
@@ -64,5 +61,5 @@ html
 		script(src = "http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js")
 
 
-		script(src='/javascript/jquery for issue book.js' )
+		script(src='/javascript/jquery for return book.js' )
 

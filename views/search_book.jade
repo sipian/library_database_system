@@ -1,0 +1,61 @@
+doctype
+html
+	head
+		title Search Book
+		meta(charset = "utf-8")
+		meta(http-equiv="X-UA-Compatible" , content="IE=edge")
+		meta(name="viewport", content="width=device-width, initial-scale=1")
+		
+
+		//style sheets 
+
+		//link(href="http://code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css",rel="stylesheet")
+  
+		link(href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css",rel="stylesheet")
+
+		link(href="/css/css for adding search.css",rel="stylesheet")
+	body
+		.container-fluid
+			div.a
+			div.b
+				h1 IITH Search
+					br
+				h3
+				h3
+					//p
+					//	label(for="name") Name&nbsp;&nbsp;&nbsp;
+					//		input(type="checkbox" , id ="name" ,name="name" ,value="name")
+					//		&nbsp;&nbsp;&nbsp;
+					//	label(for="source") Source&nbsp;&nbsp;&nbsp;
+					//		input(type="checkbox" , id ="source" ,name="source" ,value="source")
+					//		&nbsp;&nbsp;&nbsp;
+					//	label(for="author") Author&nbsp;&nbsp;&nbsp;
+					//		input(type="checkbox" , id ="author" ,name="author" ,value="author")
+					//		&nbsp;&nbsp;&nbsp;
+					//	label(for="genre") Genre&nbsp;&nbsp;&nbsp;
+					//		input(type="checkbox" , id ="genre",name="genre" ,value="genre")
+					//		&nbsp;&nbsp;&nbsp;
+					//	label(for="publisher") Publisher&nbsp;&nbsp;&nbsp;
+					//		input(type="checkbox" , id ="publisher" ,name="publisher" ,value="publisher")
+					//		&nbsp;&nbsp;&nbsp;
+
+					p
+						form(action='/search_book',method='get')
+							input(type="text" placeholder="enter query item....",id = "search",name = "search" , class = 'col-xs-10',value="#{user_query}")
+							&nbsp;
+							button(type='submit' , class = "btn btn-lg btn-warning ") Search
+					div !{query_result}
+
+				
+
+			div.c 
+		//javascript files placed at end for better speed
+
+		script( src = "https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js")
+
+
+		script(src = "http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js")
+
+
+		//script(src='/javascript/jquery for login page.js' )
+

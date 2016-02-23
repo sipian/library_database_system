@@ -1,23 +1,78 @@
-aca25	fwerweqr	qfqwr	Yes	sf	asdf	academic	\N	\N	\N	\N
-aca26	fwerweqr	qfqwr	Yes	sf	asdf	academic	\N	\N	\N	\N
-aca27	fwerweqr	qfqwr	Yes	sf	asdf	academic	\N	\N	\N	\N
-aca28	fwerweqr	qfqwr	Yes	sf	asdf	academic	\N	\N	\N	\N
-aca29	fwerweqr	qfqwr	Yes	sf	asdf	academic	\N	\N	\N	\N
-aca30	fwerweqr	qfqwr	Yes	sf	asdf	academic	\N	\N	\N	\N
-aca31	fwerweqr	qfqwr	Yes	sf	asdf	academic	\N	\N	\N	\N
-aca32	fwerweqr	qfqwr	Yes	sf	asdf	academic	\N	\N	\N	\N
-aca33	fwerweqr	qfqwr	Yes	sf	asdf	academic	\N	\N	\N	\N
-aca34	fwerweqr	qfqwr	Yes	sf	asdf	academic	\N	\N	\N	\N
-aca35	fwerweqr	qfqwr	Yes	sf	asdf	academic	\N	\N	\N	\N
-aca36	fwerweqr	qfqwr	Yes	sf	asdf	academic	\N	\N	\N	\N
-aca37	fwerweqr	qfqwr	Yes	sf	asdf	academic	\N	\N	\N	\N
-aca38	fwerweqr	qfqwr	Yes	sf	asdf	academic	\N	\N	\N	\N
-aca39	fwerweqr	qfqwr	Yes	sf	asdf	academic	\N	\N	\N	\N
-aca40	fwerweqr	qfqwr	Yes	sf	asdf	academic	\N	\N	\N	\N
-aca41	fwerweqr	qfqwr	Yes	sf	asdf	academic	\N	\N	\N	\N
-aca42	fwerweqr	qfqwr	Yes	sf	asdf	academic	\N	\N	\N	\N
-aca43	fwerweqr	qfqwr	Yes	sf	asdf	academic	\N	\N	\N	\N
-aca44	fwerweqr	qfqwr	Yes	sf	asdf	academic	\N	\N	\N	\N
-aca45	fwerweqr	qfqwr	Yes	sf	asdf	academic	\N	\N	\N	\N
-aca46	fwerweqr	qfqwr	Yes	sf	asdf	academic	\N	\N	\N	\N
-aca47	fwerweqr	qfqwr	Yes	sf	asdf	academic	\N	\N	\N	\N
+aca10	calculus	thomas and finny	Yes	pearson	india	academic	2	2012	345	cse
+aca11	calculus	thomas and finny	Yes	pearson	india	academic	2	2012	345	cse
+aca12	calculus	thomas and finny	Yes	pearson	india	academic	2	2012	345	cse
+aca13	calculus	thomas and finny	Yes	pearson	india	academic	2	2012	345	cse
+aca14	calculus	thomas and finny	Yes	pearson	india	academic	2	2012	345	cse
+aca15	calculus	thomas and finny	Yes	pearson	india	academic	2	2012	345	cse
+aca16	calculus	thomas and finny	Yes	pearson	india	academic	2	2012	345	cse
+aca17	calculus	thomas and finny	Yes	pearson	india	academic	2	2012	345	cse
+aca18	calculus	thomas and finny	Yes	pearson	india	academic	2	2012	345	cse
+aca19	calculus	thomas and finny	Yes	pearson	india	academic	2	2012	345	cse
+aca20	calculus	thomas and finny	Yes	pearson	india	academic	2	2012	345	cse
+aca21	calculus	thomas and finny	Yes	pearson	india	academic	2	2012	345	cse
+aca22	calculus	thomas and finny	Yes	pearson	india	academic	2	2012	345	cse
+aca23	calculus	thomas and finny	Yes	pearson	india	academic	2	2012	345	cse
+aca24	calculus	thomas and finny	Yes	pearson	india	academic	2	2012	345	cse
+aca25	calculus	thomas and finny	Yes	pearson	india	academic	2	2012	345	cse
+aca26	calculus	thomas and finny	Yes	pearson	india	academic	2	2012	345	cse
+aca27	calculus	thomas and finny	Yes	pearson	india	academic	2	2012	345	cse
+aca28	calculus	thomas and finny	Yes	pearson	india	academic	2	2012	345	cse
+aca29	calculus	thomas and finny	Yes	pearson	india	academic	2	2012	345	cse
+aca30	calculus	thomas and finny	Yes	pearson	india	academic	2	2012	345	cse
+aca31	calculus	thomas and finny	Yes	pearson	india	academic	2	2012	345	cse
+aca32	calculus	thomas and finny	Yes	pearson	india	academic	2	2012	345	cse
+aca33	calculus	thomas and finny	Yes	pearson	india	academic	2	2012	345	cse
+aca34	calculus	thomas and finny	Yes	pearson	india	academic	2	2012	345	cse
+aca35	calculus	thomas and finny	Yes	pearson	india	academic	2	2012	345	cse
+aca36	calculus	thomas and finny	Yes	pearson	india	academic	2	2012	345	cse
+aca37	calculus	thomas and finny	Yes	pearson	india	academic	2	2012	345	cse
+aca38	calculus	thomas and finny	Yes	pearson	india	academic	2	2012	345	cse
+aca39	calculus	thomas and finny	Yes	pearson	india	academic	2	2012	345	cse
+aca40	calculus	thomas and finny	Yes	pearson	india	academic	2	2012	345	cse
+aca41	calculus	thomas and finny	Yes	pearson	india	academic	2	2012	345	cse
+aca42	calculus	thomas and finny	Yes	pearson	india	academic	2	2012	345	cse
+aca43	calculus	thomas and finny	Yes	pearson	india	academic	2	2012	345	cse
+aca44	calculus	thomas and finny	Yes	pearson	india	academic	2	2012	345	cse
+aca45	calculus	thomas and finny	Yes	pearson	india	academic	2	2012	345	cse
+aca46	calculus	thomas and finny	Yes	pearson	india	academic	2	2012	345	cse
+aca47	calculus	thomas and finny	Yes	pearson	india	academic	2	2012	345	cse
+aca48	calculus	thomas and finny	Yes	pearson	india	academic	2	2012	345	cse
+aca49	calculus	thomas and finny	Yes	pearson	india	academic	2	2012	345	cse
+aca50	calculus	thomas and finny	Yes	pearson	india	academic	2	2012	345	cse
+aca51	calculus	thomas and finny	Yes	pearson	india	academic	2	2012	345	cse
+aca52	calculus	thomas and finny	Yes	pearson	india	academic	2	2012	345	cse
+aca53	calculus	thomas and finny	Yes	pearson	india	academic	2	2012	345	cse
+aca54	calculus	thomas and finny	Yes	pearson	india	academic	2	2012	345	cse
+aca55	calculus	thomas and finny	Yes	pearson	india	academic	2	2012	345	cse
+aca56	calculus	thomas and finny	Yes	pearson	india	academic	2	2012	345	cse
+aca57	calculus	thomas and finny	Yes	pearson	india	academic	2	2012	345	cse
+aca58	calculus	thomas and finny	Yes	pearson	india	academic	2	2012	345	cse
+aca59	calculus	thomas and finny	Yes	pearson	india	academic	2	2012	345	cse
+aca60	calculus	thomas and finny	Yes	pearson	india	academic	2	2012	345	cse
+aca61	calculus	thomas and finny	Yes	pearson	india	academic	2	2012	345	cse
+aca62	calculus	thomas and finny	Yes	pearson	india	academic	2	2012	345	cse
+aca63	calculus	thomas and finny	Yes	pearson	india	academic	2	2012	345	cse
+aca64	calculus	thomas and finny	Yes	pearson	india	academic	2	2012	345	cse
+aca65	calculus	thomas and finny	Yes	pearson	india	academic	2	2012	345	cse
+aca66	calculus	thomas and finny	Yes	pearson	india	academic	2	2012	345	cse
+aca67	calculus	thomas and finny	Yes	pearson	india	academic	2	2012	345	cse
+aca68	calculus	thomas and finny	Yes	pearson	india	academic	2	2012	345	cse
+aca69	calculus	thomas and finny	Yes	pearson	india	academic	2	2012	345	cse
+aca70	calculus	thomas and finny	Yes	pearson	india	academic	2	2012	345	cse
+aca71	calculus	thomas and finny	Yes	pearson	india	academic	2	2012	345	cse
+aca72	calculus	thomas and finny	Yes	pearson	india	academic	2	2012	345	cse
+aca73	calculus	thomas and finny	Yes	pearson	india	academic	2	2012	345	cse
+aca74	calculus	thomas and finny	Yes	pearson	india	academic	2	2012	345	cse
+aca75	calculus	thomas and finny	Yes	pearson	india	academic	2	2012	345	cse
+aca76	calculus	thomas and finny	Yes	pearson	india	academic	2	2012	345	cse
+aca77	calculus	thomas and finny	Yes	pearson	india	academic	2	2012	345	cse
+aca78	calculus	thomas and finny	Yes	pearson	india	academic	2	2012	345	cse
+aca79	calculus	thomas and finny	Yes	pearson	india	academic	2	2012	345	cse
+aca80	calculus	thomas and finny	Yes	pearson	india	academic	2	2012	345	cse
+aca81	calculus	thomas and finny	Yes	pearson	india	academic	2	2012	345	cse
+aca82	calculus	thomas and finny	Yes	pearson	india	academic	2	2012	345	cse
+aca83	calculus	thomas and finny	Yes	pearson	india	academic	2	2012	345	cse
+aca84	calculus	thomas and finny	Yes	pearson	india	academic	2	2012	345	cse
+aca85	calculus	thomas and finny	Yes	pearson	india	academic	2	2012	345	cse
+aca86	calculus	thomas and finny	Yes	pearson	india	academic	2	2012	345	cse
+aca87	calculus	thomas and finny	Yes	pearson	india	academic	2	2012	345	cse

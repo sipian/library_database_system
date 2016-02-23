@@ -1,0 +1,78 @@
+delete from setting;
+delete from accounts;
+delete from book_transaction;
+drop table setting;
+drop table accounts;
+drop table book_transaction;
+delete from user;
+delete from books;
+drop table user;
+drop table books;
+
+create table user(
+user_id int(11) primary key auto_increment not null,
+roll_no varchar(25) unique not null,
+role enum('student','professor','librarian','headlibrarian') not null,
+name_of_user text not null,
+sex enum('male','female') not null,
+branch enum('btech','mtech','phd') ,
+email_id varchar(40) not null,
+password_of_user longtext not null,
+phone text,
+description mediumtext
+)engine = InnoDB;
+
+insert into user(roll_no,role,name_of_user,sex,email_id,password_of_user,phone,description) values('libstaff0001','headlibrarian','harsh agarwal','male','agarwal.h1997@gmail.com','b109f3bbbc244eb82441917ed06d618b9008dd09b3befd1b5e07394c706a8bb980b1d7785e5976ec049b46df5f1326af5a2ea6d103fd07c95385ffab0cacbc86','8400700457','I am the head librarian , I am GOD');
+create table  books(
+book_id char(10) primary key,
+book_title text not null,
+author_of_book text not null,
+issuable enum('Yes','No'),
+publisher varchar(25) not null,
+place_of_publish varchar(14),
+genre char(20) not null,
+edition tinyint(3) unsigned,
+year_of_print smallint(5) unsigned,
+pages smallint(5) unsigned,
+description mediumtext);
+
+insert into books values('tem0','','','Yes','','','academic',null,null,null,null);
+
+create table accounts(
+book_id_for_accounts char(10),
+date_of_purchase char(50),
+cost double,
+status_of_book varchar(18) not null,
+bill_number char(15) not null, 
+book_source varchar(30),
+foreign key (book_id_for_accounts) 
+references books(book_id)
+on update cascade
+on delete cascade
+);
+alter table books add fulltext search_key (book_title,author_of_book,publisher);
+
+create table  setting(
+max_books int unsigned ,
+fine_1st_week double unsigned ,
+fine_2nd_week double unsigned,
+fine_3rd_week double unsigned  
+);
+
+create table book_transaction(
+roll_no varchar(25) ,
+book_id char(10),
+issue Date,
+estimated_return_date Date,
+receiving Date,
+reserve char(5) default  'no',
+foreign key (roll_no) 
+references user(roll_no)
+on update cascade
+on delete cascade,
+foreign key (book_id) 
+references books(book_id)
+on update cascade
+on delete cascade
+);
+insert into setting values(3,1,2,3);

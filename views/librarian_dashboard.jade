@@ -22,13 +22,13 @@ html
 					br
 				h3 Settings 
 					p
-						a(href="http://localhost:3000/librarian/dashboard/settings" , target = "_blank" , class="btn btn-lg btn-primary") Change Settings
+						a(href="/librarian/dashboard/settings" , target = "_blank" , class="btn btn-lg btn-primary") Change Settings
 					br
 				h3 Books
 					p
-						a(href="http://localhost:3000/librarian/dashboard/issue" , target = "_blank" , class="btn btn-lg btn-primary") Issue
-					p
-						button(type = "submit" , class = "btn btn-lg btn-primary ") Return
+						a(href="/librarian/dashboard/issue" , target = "_blank" , class="btn btn-lg btn-primary") Issue
+					p 
+						a(href="/librarian/dashboard/return" , target = "_blank" , class="btn btn-lg btn-primary") Return
 						
 					p
 						button(type = "submit" , class = "btn btn-lg btn-primary ") Reserve
@@ -37,7 +37,7 @@ html
 					br
 				h3 Add
 					p
-						a(href="http://localhost:3000/librarian/add_new_book" , target = "_blank" , class="btn btn-lg btn-primary") Books
+						a(href="/librarian/add_new_book" , target = "_blank" , class="btn btn-lg btn-primary") Books
 					p
 						button(type = "submit" , class = "btn btn-lg btn-primary ") User
 					br
@@ -46,7 +46,7 @@ html
 					p
 						button(type = "submit" , class = "btn btn-lg btn-primary ") Change password
 					p
-						button(type = "submit" , class = "btn btn-lg btn-primary ") Log Out
+						a(href="/logout" , target = "_self" , class="btn btn-lg btn-primary") Log Out
 						
 					p
 						button(type = "submit" , class = "btn btn-lg btn-primary ") Delete account(if books returned)

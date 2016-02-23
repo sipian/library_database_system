@@ -1,4 +1,12 @@
+var mysql = require("mysql");
 
+		var dbclient=mysql.createConnection({
+			host: process.env.RDS_HOSTNAME || "localhost",
+			user:process.env.RDS_USERNAME || "headlibrarian",
+			password:process.env.RDS_PASSWORD || "password",
+			database:"ebdb"
+		});
+		dbclient.connect();
 module.exports=function(data){
 	return{
 		decrypt_data:function(){
@@ -27,16 +35,7 @@ module.exports=function(data){
 		},
 		checking_if_user_exists:function(array,callback){
 				
-    			var mysql = require("mysql");
-    			var dbclient=mysql.createConnection({
-      				host:"localhost",
-      				user:"headlibrarian",
-      				password:"password",
-      				database:"library",
-      				debug:true,     
-    	});
-      
-    		dbclient.connect();
+    			 
     		var query_for_sql ="select user_id,role from user where (roll_no = '"+array[0]+"' OR email_id = '"+array[1]+"')";
     		console.log(query_for_sql);
     		dbclient.query(query_for_sql,function(err,rows,fields){
@@ -74,18 +73,10 @@ module.exports=function(data){
         },  
 		add_into_database:function(array,callback){
 			console.log("reached database");
-			var mysql = require("mysql");
-			var validator = require("validator");
+ 			var validator = require("validator");
 			const crypto = require('crypto');
 			const hash = crypto.createHash('sha512');
-			var dbclient=mysql.createConnection({
-			host:"localhost",
-			user:"headlibrarian",
-			password:"password",
-			database:"library",
-			debug:true,			
-		});
-		dbclient.connect();
+			 
 		//loop for sanitizing input
 
 		for(var loop_variable = 0;loop_variable <=8;loop_variable++)

@@ -483,6 +483,7 @@ $("#submit").click(function () {
                   cache:true,
                   success:function(answer_to_send_back)
                   {
+                      $("#loader-wrapper").css("visibility","hidden");
                      answer_to_send_back = JSON.parse(answer_to_send_back);
                      //alert($('.c').text());
                      //alert(answer_to_send_back[0]);
@@ -508,10 +509,12 @@ $("#submit").click(function () {
                      $("#submit").off("click");
                   },
                   error: function (xhr, status, error) {
+                     $("#loader-wrapper").css("visibility","hidden");
                      string_to_print = "<pre><h2 class='col-xs-14'>Error Report: </h1><br><h3>"+error+"</h3></pre>";
                      $('.c').html(string_to_print);
                   }
                })
+               $("#loader-wrapper").css("visibility","visible");
             }
    });   
   

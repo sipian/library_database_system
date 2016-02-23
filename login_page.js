@@ -1,19 +1,19 @@
 var mysql = require("mysql");
+
+		var dbclient=mysql.createConnection({
+			host: process.env.RDS_HOSTNAME || "localhost",
+			user:process.env.RDS_USERNAME || "headlibrarian",
+			password:process.env.RDS_PASSWORD || "password",
+			database:"ebdb"
+		});
+		dbclient.connect();
 var crypto = require('crypto'),
     										algorithm = 'aes-256-ctr',
     										password_for_crypt = 'password';
 module.exports=function(college_id,email_id,password){
 	return {
 		check_login_user:function(callback){
-			var dbclient=mysql.createConnection({
-			host:"localhost",
-			user:"headlibrarian",
-			password:"password",
-			database:"library",
-			debug:true,			
-		});
-			
-		dbclient.connect();
+		 
 		var pass = require('crypto').createHash('sha512').update(password).digest('hex');
 		var query_for_sql ="select user_id,role from user where (roll_no = '"+college_id+"' AND email_id = '"+email_id+"' AND password_of_user = '"+pass+"')";
 		console.log(query_for_sql);

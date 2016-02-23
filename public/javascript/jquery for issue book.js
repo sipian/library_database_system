@@ -19,6 +19,7 @@ function notDisplayError (error_row) {
 
  
 $("#roll_no").blur(function(){
+   $("#date").fadeOut("slow"); 
    if($("#roll_no").val()!="")
    {
    var data1=$("#roll_no").serialize();
@@ -46,6 +47,8 @@ $("#roll_no").blur(function(){
 })
 
 $("#book").blur(function(){
+      $("#date").fadeOut("slow"); 
+
    if($("#book").val()!="")
    {
    var data1=$("#book").serialize();
@@ -61,11 +64,20 @@ $("#book").blur(function(){
                         {
                            alert("Some error happened");
                         }
-                     else if(answer_to_send_back == "not exists")
-                        {$("#error_message_2").html("Book with given I.D. does not exists .");
-                                             $("#error_message_3").html("");}
-                     else
-                        $("#error_message_2").html("");
+                     else {
+                        if(answer_to_send_back == "notexists")
+                                             {
+                                                $("#error_message_2").html("Book with given I.D. does not exists .");
+                                              $("#error_message_3").html("");
+                                           }
+                                           else {
+                                             if(answer_to_send_back == "already issued")
+                                                      {
+                                                         $("#error_message_2").html("Book with given I.D. has already been issued.");
+                                                                                              $("#error_message_3").html("");}
+                                                                                     else
+                                                                                        {$("#error_message_2").html("");
+                                                                                                             $("#error_message_3").html("");}}}
       }
    })
 }
@@ -74,15 +86,42 @@ $("#book").blur(function(){
      
 
 
-
-// for checking empty fields and if no errors send ajax request to server 
-
 $("button").click(function () {
-      
-      // value of all inputs stored here
-      
-               if($("#error_message_1").html() == "" && $("#error_message_2").html() == "")               
+      $("#date").fadeOut("slow"); 
+
+   if($("#book").val()!="")
+   {
+   var data1=$("#book").serialize();
+   $.ajax({
+      type:"get",
+      url:"/check_correct_book",
+      data: data1,
+      dataType:'html',
+      cache:true,
+      success:function(answer_to_send_back)
+         {
+            if(answer_to_send_back == "Error occured.")
+                        {
+                           alert("Some error happened");
+                        }
+                     else {
+                        if(answer_to_send_back == "notexists")
+                                             {
+                                                $("#error_message_2").html("Book with given I.D. does not exists .");
+                                              $("#error_message_3").html("");
+                                           }
+                                           else {
+                                             if(answer_to_send_back == "already issued")
+                                                      {
+                                                         $("#error_message_2").html("Book with given I.D. has already been issued.");
+                                                                                              $("#error_message_3").html("");}
+                                                                                     else
+                                                                                        {
+                                                                                          $("#error_message_2").html("");
+                                                                                         $("#error_message_3").html("");
+                                                                                         if($("#error_message_1").html() == "" && $("#error_message_2").html() == "")               
                {
+                  //alert("here");
                   $("#error_message_3").html("");
                   var data1=$("#roll_no , #book").serialize();
                               
@@ -156,6 +195,17 @@ $("button").click(function () {
                   $("#error_message_3").html("Please check the input.");
                }
 
-            });
+            }
+          }
+        }
+      }
 
-});
+
+
+                                                                            
+    })
+   }
+})
+})
+
+
