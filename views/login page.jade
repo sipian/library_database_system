@@ -17,10 +17,10 @@ html
 		.container-fluid
 			div.a
 			div.b
-				h1 cs15btech11019
+				h1 Login
 				br
-				h3 cs15btech11019@iith.ac.in
-				h3 Bbarcelona
+				h3 Enter Details
+				h3
 				br
 				//1st table
 				table(class = "table" ,cellpadding=4 , border=0)
@@ -60,10 +60,13 @@ html
 								strong Password*
 							td
 								input(type="password" , id ="password" ,name="password" ,class="col-xs-4",placeholder = "enter password..... " required)
+
 						tr(class="error_row_3" )
 							td#id1
 							td#id1
 								nav(class="col-xs-10", id="error_message_3") #{error}
+						div(id = "loader-wrapper" style="visibility: hidden;")
+							div(id = "loader")
 						button(type = "submit" , class = "btn btn-lg btn-primary ") Login
 			div.c 
 		//javascript files placed at end for better speed

@@ -250,6 +250,8 @@ $("#add").click(function () {
                   cache:true,
                   success:function(answer_to_send_back)
                   {
+                     $("#loader-wrapper").css("visibility","hidden");
+                      $("html").css("-webkit-filter"," grayscale(0%)");
                      if(answer_to_send_back == "Entry already Exists.")
                         {
                            alert("User with the given details already exists.\nPlease Again Reenter Correct Details");
@@ -275,9 +277,13 @@ $("#add").click(function () {
                      
                   },
                   error: function (xhr, status, error) {
+                     $("#loader-wrapper").css("visibility","hidden");
+                      $("html").css("-webkit-filter"," grayscale(0%)");
                      $('.c').html('Error : '+error);
                   }
                })
+               $("#loader-wrapper").css("visibility","visible");
+                       $("html").css("-webkit-filter"," grayscale(50%)");
             }
    });   
    

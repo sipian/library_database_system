@@ -67,6 +67,8 @@ $("button").click(function () {
                                  cache:true,
                                  success:function(answer_to_send_back)
                                  {
+                                    $("#loader-wrapper").css("visibility","hidden");
+                      $("html").css("-webkit-filter"," grayscale(0%)");
                                     if(answer_to_send_back == "Error occured.")
                                        {
                                           alert("Some error happened");
@@ -88,7 +90,8 @@ $("button").click(function () {
                                        }
                                     }
                                  })
-                           }
+                              $("#loader-wrapper").css("visibility","visible");
+                       $("html").css("-webkit-filter"," grayscale(50%)");                           }
                else
                {
                   $("#date").css("display","none");

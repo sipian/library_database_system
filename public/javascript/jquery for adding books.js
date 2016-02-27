@@ -484,6 +484,7 @@ $("#submit").click(function () {
                   success:function(answer_to_send_back)
                   {
                       $("#loader-wrapper").css("visibility","hidden");
+                      $("html").css("-webkit-filter"," grayscale(0%)");
                      answer_to_send_back = JSON.parse(answer_to_send_back);
                      //alert($('.c').text());
                      //alert(answer_to_send_back[0]);
@@ -510,11 +511,13 @@ $("#submit").click(function () {
                   },
                   error: function (xhr, status, error) {
                      $("#loader-wrapper").css("visibility","hidden");
+                      $("html").css("-webkit-filter"," grayscale(0%)");
                      string_to_print = "<pre><h2 class='col-xs-14'>Error Report: </h1><br><h3>"+error+"</h3></pre>";
                      $('.c').html(string_to_print);
                   }
                })
                $("#loader-wrapper").css("visibility","visible");
+               $("html").css("-webkit-filter"," grayscale(50%)");
             }
    });   
   

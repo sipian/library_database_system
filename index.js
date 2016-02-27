@@ -689,6 +689,7 @@ app.post('/return_book',urlencodedParser,function(req,res){
 						if(err)
 						{
 						res.send("Error occured.");
+						console.log("error : "+ err);
 					}
 					else
 						{
@@ -744,26 +745,14 @@ app.get("/logout",function(req,res){
 	res.redirect('/');
 });
 app.get("/search_book", urlencodedParser,function(req,res){
-	var user_authentication = req.signedCookies.user;
-	if(user_authentication)
-	{
-		console.log("we get the cookie =  " + user_authentication);
-		console.log("cookie array : "+cookie_checker(user_authentication));
-		var cookie_checker_array_1 = cookie_checker(user_authentication);
-     	console.log("debug : "+cookie_checker_array_1.user_id+" , "+cookie_checker_array_1.role+" , "+cookie_checker_array_1.logged_in);
-				if(cookie_checker_array_1.logged_in != 'yes')
-					res.send('<script>alert("Please login first")</script>');
-				else if(cookie_checker_array_1.role != 'librarian' && cookie_checker_array_1.role != 'headlibrarian' && cookie_checker_array_1.role != 'student' && cookie_checker_array_1.role != 'professor')
-					res.send('<script>alert("You are not authorized to enter here.")</script>');
-				else
-					{
+
 						var query = req.query.search;
-									if(query == null)
+								if(query == null)
 										res.render('search_book.jade',{user_query:""});
 								else
 									{
-					
-					
+
+
 										//res.render('search_book.jade',{user_query:query});}
 										var query_for_sql ="select DISTINCT book_title,author_of_book,publisher,issuable from books where match(book_title,author_of_book,publisher) against( ? IN NATURAL LANGUAGE MODE)";
 										dbclient.query(query_for_sql,[query],function(err,rows,fields){
@@ -778,8 +767,8 @@ app.get("/search_book", urlencodedParser,function(req,res){
 											{
 												var string = "";
 												for (var i = 0; i <=rows.length - 1; i++) {
-															string = string + "<a href = 'http://localhost:3000/book_details?query="+query+"&book_title="+rows[i].book_title+"&author_of_book="+rows[i].author_of_book+"&publisher="+rows[i].publisher+"&issuable="+rows[i].issuable+"' ,target='_blank'><pre width=80% , height:100%>"+"<div class = 'col-xs-5''><img src='http://i.imgur.com/jNhTge7.gif'  width=100% height=100%></div><div class = 'col-xs-7'><h4 class='text-justify'><br>Book Name : "+rows[i].book_title+"<br>Book Author : "+rows[i].author_of_book+"<br>Publisher : "+rows[i].publisher+"<br>Issuable :  "+rows[i].issuable+"</h4></div></pre></a>";
-					
+															string = string + "<a href = 'http://lib.harshagarwal.co.in/book_details?query="+query+"&book_title="+rows[i].book_title+"&author_of_book="+rows[i].author_of_book+"&publisher="+rows[i].publisher+"&issuable="+rows[i].issuable+"' ,target='_blank'><pre width=80% , height:100%>"+"<div class = 'col-xs-5''><img src='http://i.imgur.com/jNhTge7.gif'  width=100% height=100%></div><div class = 'col-xs-7'><h4 class='text-justify'><br>Book Name : "+rows[i].book_title+"<br>Book Author : "+rows[i].author_of_book+"<br>Publisher : "+rows[i].publisher+"<br>Issuable :  "+rows[i].issuable+"</h4></div></pre></a>";
+
 																	}
 																	string = string.replace(/null/gi,"-")
 																	res.render('search_book.jade',{user_query:query,query_result:string});
@@ -789,32 +778,16 @@ app.get("/search_book", urlencodedParser,function(req,res){
 												res.render('search_book.jade',{user_query:query,query_result:string});
 											}
 														}
-					
-					
-					
+
+
+
 						})
 									}
-								}
-			}
-	else{
-		 res.sendStatus(404);
-	}
+
 });
 
 app.get('/book_details',urlencodedParser,function(req,res){
-	var user_authentication = req.signedCookies.user;
-	if(user_authentication)
-	{
-		console.log("we get the cookie =  " + user_authentication);
-		console.log("cookie array : "+cookie_checker(user_authentication));
-		var cookie_checker_array_1 = cookie_checker(user_authentication);
-     	console.log("debug : "+cookie_checker_array_1.user_id+" , "+cookie_checker_array_1.role+" , "+cookie_checker_array_1.logged_in);
-			if(cookie_checker_array_1.logged_in != 'yes')
-				res.send('<script>alert("Please login first")</script>');
-			else if(cookie_checker_array_1.role != 'librarian' && cookie_checker_array_1.role != 'headlibrarian' && cookie_checker_array_1.role != 'student' && cookie_checker_array_1.role != 'professor')
-				res.send('<script>alert("You are not authorized to enter here.")</script>');
-			else
-				{
+
 						var book_title = req.query.book_title;
 										var author_of_book = req.query.author_of_book;
 										var publisher = req.query.publisher;
@@ -825,7 +798,7 @@ app.get('/book_details',urlencodedParser,function(req,res){
 									}
 								else
 									{
-										//res.render('search_book.jade',{user_query:query});}
+										//res.render('search_book.jade',{user_query:query});
 										var query_for_sql ="select book_id,description from books where (book_title = ? AND author_of_book = ? AND publisher = ? AND issuable = ?) ";
 										dbclient.query(query_for_sql,[book_title,author_of_book,publisher,issuable],function(err,rows,fields){
 											if(err)
@@ -843,15 +816,15 @@ app.get('/book_details',urlencodedParser,function(req,res){
 														<img src='http://i.imgur.com/jNhTge7.gif'  width=100% height=100%>
 													</div>
 													<div class = 'col-xs-8'>
-														<p>Title -> <h3>`+book_title+`</h4></p>
-														<p>By -> <h4>`+author_of_book+`</h4></p>
-														<p>Publication -> <h4>`+publisher+`</h4></p>
-														<p>Issuable -> <h4>`+issuable+`</h4></p>
-														<p>Description -> <h4>`+rows[0].description+`</h4></p>
+														Title -> `+book_title+`
+														<br><br>By -> `+author_of_book+`
+														<br><br>Publication -> `+publisher+`
+														<br><br>Issuable -> `+issuable+`
+														<br><br>Description -> `+rows[0].description+`
 													</div>
 												</div>
 													<div>
-														<table class = "table table-condensed table-striped" cellpadding=3  border=0>
+														<table class = "table table-condensed " cellpadding=3  border=0>
 															<tr>
 																<td><h5><strong>Book I.D.</strong></h5></td>
 																<td><h5><strong>Available</strong></h5></td>
@@ -859,11 +832,14 @@ app.get('/book_details',urlencodedParser,function(req,res){
 																<td><h5><strong>Is Book Reserved</strong></h5></td>
 																<td><h5><strong>Reserve It</strong></h5></td>
 															</tr>`;
-															console.log("string for 1st case -> "+string);
- 												for (var i = 0; i <=rows.length - 1; i++)
-												{
-													var book_id_temp = rows[i].book_id;
- 													query_for_sql = "select estimated_return_date,reserve from book_transaction where book_id = '"+book_id_temp+"' AND receiving IS NULL";
+															console.log("********* -> "+string);
+															string = string.replace("null","-");
+													//var book_id_temp = rows[i].book_id;
+													function details(i)
+													{
+														if(i<rows.length)
+														{
+															query_for_sql = "select estimated_return_date,reserve from book_transaction where book_id = '"+rows[i].book_id+"' AND receiving IS NULL";
 													console.log("query_for_sql "+(i+1)+" : "+query_for_sql);
 													dbclient.query(query_for_sql,function(err,rows1,fields){
 														if(err){
@@ -873,27 +849,27 @@ app.get('/book_details',urlencodedParser,function(req,res){
 														else
 														{
 															console.log("row length : "+ rows1.length);
-															console.log("book id "+(i+1)+" : "+ book_id_temp);
+															console.log("book id "+(i+1)+" : "+ rows[i].book_id);
 															if(rows1.length == 0)
 																												{
 																													string = string + `
 																													<tr>
-																														<td><h5>`+book_id_temp+`</h5></td>
+																														<td><h5>`+rows[i].book_id+`</h5></td>
 																														<td><h5>Yes</h5></td>
 																														<td><h5>---</h5></td>
 																														<td><h5>---</h5></td>
 																														<td><h5>---</h5></td>
 																													</tr>`;
-																													console.log("string for 1st case -> "+string);
+																													console.log("string for 1st case -> *** "+rows[i].book_id);
 																												}
 																												else if(rows1.length == 1 ){
-																													if(rows1[i].reserve == null)
+																													if(rows1[0].reserve == null)
 																													{
 																														string = string + `
 																																							<tr>
-																																								<td><h5>`+book_id_temp+`</h5></td>
+																																								<td><h5>`+rows[i].book_id+`</h5></td>
 																																								<td><h5>No</h5></td>
-																																								<td><h5>`+rows1[i].estimated_return_date+`</h5></td>
+																																								<td><h5>`+rows1[0].estimated_return_date.toString().substring(0,15)+`</h5></td>
 																																								<td><h5>No</h5></td>
 																																								<td><h5><input type="checkbox" ,name = "reserve" ,id = "reserve" , value = "Yes"></h5></td>
 																																							</tr>`;
@@ -902,17 +878,18 @@ app.get('/book_details',urlencodedParser,function(req,res){
 																													else{
 																														string = string + `
 																																							<tr>
-																																								<td><h5>`+book_id_temp+`</h5></td>
+																																								<td><h5>`+rows[i].book_id+`</h5></td>
 																																								<td><h5>No</h5></td>
-																																								<td><h5>`+rows1[i].estimated_return_date+`</h5></td>
+																																								<td><h5>`+rows1[0].estimated_return_date.toString().substring(0,15)+`</h5></td>
 																																								<td><h5>Yes</h5></td>
 																																								<td><h5>---</h5></td>
 																																							</tr>`;
 																														//console.log("string for 3rd case -> "+string);
 																													}
-																			
-																			
+
+
 																												}
+																												details(i+1);
 																											}
 																										})
 												}
@@ -921,12 +898,15 @@ app.get('/book_details',urlencodedParser,function(req,res){
 													//string = string + "</table></div>";
 												res.render('search_book.jade',{user_query:req.query.query,query_result:string});
 												}
+														}
+
+													details(0);
+
+
+
 											}
 										})
 									}
-								}		
-							}
-							else
-								res.sendStatus(404);
-						});
 
+
+						});
